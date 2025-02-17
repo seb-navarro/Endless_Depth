@@ -1,6 +1,6 @@
 [gd_scene load_steps=31 format=3 uid="uid://wp7styrjr6eh"]
 
-[ext_resource type="Script" path="res://Playe/Playe.gd" id="1_mxh4d"]
+[ext_resource type="Script" path="res://Player/Player.gd" id="1_mxh4d"]
 [ext_resource type="Texture2D" uid="uid://cypp1sy3t8esr" path="res://assets/art/player/Submarine (Right) - Endless Depth/submarine_right_00.png" id="2_4iguf"]
 [ext_resource type="Texture2D" uid="uid://bhqlx0jj5xikj" path="res://assets/art/player/Submarine (Right) - Endless Depth/submarine_right_01.png" id="3_mv7dg"]
 [ext_resource type="Texture2D" uid="uid://bv32ybts3lco" path="res://assets/art/player/Submarine (Right) - Endless Depth/submarine_right_02.png" id="4_dnoew"]
