@@ -36,9 +36,9 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	hide() # Player disappears after being hit.
 	hit.emit()
-	$CollisionShape2D.set_deferred("disabled", true)
+	$CollisionPolygon2D.set_deferred("disabled", true)
 	
 func start(pos):
 	position = pos
 	show()
-	$CollisionShape2D.disabled = false
+	$CollisionPolygon2D.disabled = false
