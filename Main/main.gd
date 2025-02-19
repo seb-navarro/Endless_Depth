@@ -2,6 +2,7 @@ extends Node
 
 @export var enemy_scene: PackedScene
 var fuel = 100
+var depth = 0
 
 
 # Called when the node enters the scene tree for the first time.
@@ -42,6 +43,7 @@ func _on_enemy_timer_timeout() -> void:
 	add_child(enemy)
 
 
+
 func _on_fuel_deplete_timeout() -> void:
 	fuel -= 1
 
@@ -53,3 +55,7 @@ func _on_start_timer_timeout() -> void:
 func game_over():
 	$EnemyTimer.stop()
 	$FuelDeplete.stop()
+
+
+func _on_depth_timeout() -> void:
+	depth += 1
