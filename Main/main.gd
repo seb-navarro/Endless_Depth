@@ -24,6 +24,7 @@ func new_game():
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
 
+
 func _on_enemy_timer_timeout() -> void:
 	var enemy = enemy_scene.instantiate()
 	

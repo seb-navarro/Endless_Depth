@@ -15,6 +15,37 @@
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_13wvf")
 
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+anchors_preset = -1
+anchor_top = 0.071
+anchor_bottom = 0.071
+offset_top = -0.120003
+offset_right = 280.0
+offset_bottom = 39.88
+grow_vertical = 2
+fill_mode = 1
+texture_under = ExtResource("2_3gtdg")
+texture_progress = ExtResource("3_b70ee")
+
+[node name="Fuel" type="Label" parent="."]
+offset_right = 96.0
+offset_bottom = 51.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_io1tw")
+theme_override_font_sizes/font_size = 64
+text = "FUEL"
+
+[node name="DepthGauge" type="TextureRect" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -128.0
+offset_bottom = 128.0
+grow_horizontal = 0
+texture = ExtResource("4_swav1")
+
 [node name="Depth" type="Label" parent="."]
 z_index = 1
 anchors_preset = -1
@@ -70,36 +101,9 @@ theme_override_font_sizes/font_size = 32
 text = "METERS"
 horizontal_alignment = 1
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
-anchors_preset = -1
-anchor_top = 0.071
-anchor_bottom = 0.071
-offset_top = -0.120003
-offset_right = 280.0
-offset_bottom = 39.88
-grow_vertical = 2
-fill_mode = 1
-texture_under = ExtResource("2_3gtdg")
-texture_progress = ExtResource("3_b70ee")
-
-[node name="Fuel" type="Label" parent="."]
-offset_right = 96.0
-offset_bottom = 51.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_io1tw")
-theme_override_font_sizes/font_size = 64
-text = "FUEL"
-
-[node name="DepthGauge" type="TextureRect" parent="."]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -128.0
-offset_bottom = 128.0
-grow_horizontal = 0
-texture = ExtResource("4_swav1")
+[node name="MessageTimer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
 
 [node name="Message" type="Label" parent="."]
 anchors_preset = -1
@@ -119,28 +123,6 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_io1tw")
 theme_override_font_sizes/font_size = 64
 text = "GAME OVER"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="BoostLabel" type="Label" parent="."]
-z_index = 1
-anchors_preset = -1
-anchor_left = 0.504
-anchor_top = 0.924
-anchor_right = 0.504
-anchor_bottom = 0.924
-offset_left = -63.92
-offset_top = -29.28
-offset_right = 64.08
-offset_bottom = 21.72
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_io1tw")
-theme_override_font_sizes/font_size = 48
-text = "BOOST"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -165,10 +147,6 @@ text = "PERSONAL BEST!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MessageTimer" type="Timer" parent="."]
-wait_time = 15.0
-one_shot = true
-
 [node name="Left" type="TouchScreenButton" parent="."]
 position = Vector2(0, 560)
 scale = Vector2(2.5, 2.5)
@@ -186,5 +164,27 @@ position = Vector2(178, 592)
 scale = Vector2(2, 2)
 texture_normal = ExtResource("10_8kmhv")
 texture_pressed = ExtResource("11_rcw8h")
+
+[node name="BoostLabel" type="Label" parent="."]
+z_index = 1
+anchors_preset = -1
+anchor_left = 0.504
+anchor_top = 0.924
+anchor_right = 0.504
+anchor_bottom = 0.924
+offset_left = -63.92
+offset_top = -29.28
+offset_right = 64.08
+offset_bottom = 21.72
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_io1tw")
+theme_override_font_sizes/font_size = 48
+text = "BOOST"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]
