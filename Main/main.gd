@@ -2,7 +2,7 @@ extends Node
 
 @export var enemy_scene: PackedScene
 var fuel = 100
-
+var depth = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -11,12 +11,13 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if fuel == 0:
+	if fuel <= 0:
 		game_over()
 
 
 func _on_player_hit() -> void:
 	fuel -= 10
+	print(fuel)
 
 func new_game():
 	fuel = 100
@@ -42,6 +43,7 @@ func _on_enemy_timer_timeout() -> void:
 	add_child(enemy)
 
 
+
 func _on_fuel_deplete_timeout() -> void:
 	fuel -= 1
 
@@ -49,7 +51,15 @@ func _on_fuel_deplete_timeout() -> void:
 func _on_start_timer_timeout() -> void:
 	$EnemyTimer.start()
 	$FuelDeplete.start()
+	$DepthTimer.start()
 
 func game_over():
 	$EnemyTimer.stop()
 	$FuelDeplete.stop()
+	$DepthTimer.stop()
+	$HUD.show_game_over()
+
+
+func _on_depth_timer_timeout() -> void:
+	depth += 1
+	$HUD.update_depth(depth)

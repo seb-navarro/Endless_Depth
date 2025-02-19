@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dliulwqq7o3kf"]
+[gd_scene load_steps=6 format=3 uid="uid://dliulwqq7o3kf"]
 
 [ext_resource type="PackedScene" uid="uid://wp7styrjr6eh" path="res://Player/Player.tscn" id="1_75qh5"]
 [ext_resource type="Script" path="res://Main/main.gd" id="1_bguby"]
 [ext_resource type="PackedScene" uid="uid://1u56hh1j6n4d" path="res://Enemies/BadFish/BadFish.tscn" id="2_22who"]
+[ext_resource type="PackedScene" uid="uid://bw0ocppp3257y" path="res://HUD/hud.tscn" id="4_74q7b"]
 
 [sub_resource type="Curve2D" id="Curve2D_loo8f"]
 _data = {
@@ -26,6 +27,9 @@ wait_time = 0.5
 wait_time = 2.0
 one_shot = true
 
+[node name="DepthTimer" type="Timer" parent="."]
+wait_time = 0.5
+
 [node name="StartPosition" type="Marker2D" parent="."]
 position = Vector2(240, 200)
 
@@ -36,7 +40,10 @@ curve = SubResource("Curve2D_loo8f")
 position = Vector2(480, 344)
 rotation = 1.5708
 
+[node name="HUD" parent="." instance=ExtResource("4_74q7b")]
+
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
 [connection signal="timeout" from="FuelDeplete" to="." method="_on_fuel_deplete_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
+[connection signal="timeout" from="DepthTimer" to="." method="_on_depth_timer_timeout"]
