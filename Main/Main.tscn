@@ -6,15 +6,16 @@
 
 [sub_resource type="Curve2D" id="Curve2D_loo8f"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 480, 0, 0, 0, 0, 0, 480, 720, 0, 0, 0, 0, 0, 720, 0, 0, 0, 0, 0, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 480, 344, 0, 0, 0, 0, 480, 720, 0, 0, 0, 0, 0, 720, 0, 0, 0, 0, 0, 360)
 }
-point_count = 5
+point_count = 4
 
 [node name="main" type="Node"]
 script = ExtResource("1_bguby")
 enemy_scene = ExtResource("2_22who")
 
 [node name="Player" parent="." instance=ExtResource("1_75qh5")]
+position = Vector2(240, 200)
 
 [node name="EnemyTimer" type="Timer" parent="."]
 wait_time = 0.5
@@ -26,12 +27,14 @@ wait_time = 2.0
 one_shot = true
 
 [node name="StartPosition" type="Marker2D" parent="."]
-position = Vector2(240, 250)
+position = Vector2(240, 200)
 
 [node name="EnemyPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_loo8f")
 
 [node name="EnemySpawnLocation" type="PathFollow2D" parent="EnemyPath"]
+position = Vector2(480, 344)
+rotation = 1.5708
 
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
