@@ -13,11 +13,12 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if fuel <= 0:
 		game_over()
+	
+	$HUD/FuelGauge.value = fuel
 
 
 func _on_player_hit() -> void:
 	fuel -= 10
-	print(fuel)
 
 func new_game():
 	fuel = 100
