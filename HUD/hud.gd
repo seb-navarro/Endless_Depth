@@ -24,9 +24,7 @@ func show_game_over():
 
 func show_refuelling():
 	show_message("Refuelling...", 15)
-	# Wait until the MessageTimer has counted down.
-	await $MessageTimer.timeout
-	$MessageTimer.hide()
+
 
 
 func update_depth(depth):

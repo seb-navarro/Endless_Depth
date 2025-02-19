@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://wp7styrjr6eh"]
+[gd_scene load_steps=33 format=3 uid="uid://wp7styrjr6eh"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_mxh4d"]
 [ext_resource type="Texture2D" uid="uid://cypp1sy3t8esr" path="res://assets/art/player/Submarine (Right) - Endless Depth/submarine_right_00.png" id="2_4iguf"]
@@ -29,6 +29,8 @@
 [ext_resource type="Texture2D" uid="uid://bvao72gltjpgu" path="res://assets/art/player/Submarine (down-right) - Endless Depth/submarine_down_right_11.png" id="27_7ix8s"]
 [ext_resource type="Texture2D" uid="uid://o4ypm3eedath" path="res://assets/art/player/Submarine (down-right) - Endless Depth/submarine_down_right_12.png" id="28_26oep"]
 [ext_resource type="Texture2D" uid="uid://ceo82bkoq5a73" path="res://assets/art/player/Submarine (down-right) - Endless Depth/submarine_down_right_13.png" id="29_6ytyh"]
+[ext_resource type="Texture2D" uid="uid://bj0xomaxo8mcn" path="res://assets/art/player/Submarine (hit2).png" id="30_p0kt1"]
+[ext_resource type="Texture2D" uid="uid://fsl1xjlwvcql" path="res://assets/art/player/Submarine (Hit3).png" id="31_satwg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ntpu6"]
 animations = [{
@@ -125,6 +127,17 @@ animations = [{
 "loop": true,
 "name": &"submarine_accelerate",
 "speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("30_p0kt1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_satwg")
+}],
+"loop": true,
+"name": &"submarine_hit",
+"speed": 12.0
 }]
 
 [node name="Player" type="Area2D"]
@@ -134,9 +147,15 @@ metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ntpu6")
-animation = &"submarine"
+animation = &"submarine_hit"
+frame_progress = 0.560193
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-30, 12, -26, 12, -24, 12, -9, 22, 14, 22, 30, 11, 30, 4, 18, -4, 18, -24, 10, -24, 10, -6, -10, -6, -24, 4, -26, 4, -30, 4)
 
+[node name="HitTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="HitTimer" to="." method="_on_hit_timer_timeout"]
