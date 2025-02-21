@@ -1,10 +1,10 @@
-extends Area2D
+extends CharacterBody2D
 
 signal hit
 
-@export var speed = 300
 var screen_size
-
+var gravity = 2000
+var speed = 100
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,15 +14,20 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var velocity = Vector2.ZERO
+	var direction = 0
+	
+	velocity.y = gravity * delta
 	
 	if Input.is_action_pressed("move_right"):
-		velocity.x += 1
-	if Input.is_action_pressed("move_left"):
-		velocity.x -= 1
+		direction += 1
+	elif Input.is_action_pressed("move_left"):
+		direction -= 1
 	
-	if velocity.length() > 0:
-		velocity = velocity.normalized() * speed
+	velocity.x = direction * speed
+	
+	move_and_slide()
+	
+	check_collision()
 	
 	$AnimatedSprite2D.play()
 	
@@ -33,10 +38,14 @@ func _process(delta: float) -> void:
 		$AnimatedSprite2D.flip_h = velocity.x < 0
 
 
-func _on_body_entered(body: Node2D) -> void:
-	hit.emit()
-	$AnimatedSprite2D.animation = "submarine_hit"
-	$HitTimer.start()
+
+
+func check_collision():
+	if get_slide_collision_count() > 0:
+		hit.emit()
+		$AnimatedSprite2D.animation = "submarine_hit"
+		$HitTimer.start()
+		$CollisionPolygon2D.disabled = true
 
 
 func start(pos):
@@ -47,3 +56,4 @@ func start(pos):
 
 func _on_hit_timer_timeout() -> void:
 	$AnimatedSprite2D.animation = "submarine"
+	$CollisionPolygon2D.disabled = false
