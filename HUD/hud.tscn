@@ -159,13 +159,13 @@ scale = Vector2(2.5, 2.5)
 texture_normal = ExtResource("8_d27mi")
 texture_pressed = ExtResource("9_q4pdr")
 
-[node name="Boost" type="TouchScreenButton" parent="."]
+[node name="Slow" type="TouchScreenButton" parent="."]
 position = Vector2(178, 592)
 scale = Vector2(2, 2)
 texture_normal = ExtResource("10_8kmhv")
 texture_pressed = ExtResource("11_rcw8h")
 
-[node name="BoostLabel" type="Label" parent="."]
+[node name="SlowLabel" type="Label" parent="."]
 z_index = 1
 anchors_preset = -1
 anchor_left = 0.504
@@ -183,7 +183,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_io1tw")
 theme_override_font_sizes/font_size = 48
-text = "BOOST"
+text = "SLOW"
 horizontal_alignment = 1
 vertical_alignment = 1
 
