@@ -6,6 +6,8 @@ signal hit
 var screen_size
 var down = 1000
 var velocity = Vector2.ZERO
+var currentposx
+var is_moving = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,6 +18,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var player_size = Vector2(64, 64)
+	
+	var currentpos = position.x
 	
 	velocity.y = down * delta
 	
@@ -37,6 +41,9 @@ func _process(delta: float) -> void:
 	position += velocity * delta
 	
 	position.x = clamp(position.x, 0 + player_size.x / 2, screen_size.x - player_size.x / 2)
+	
+	if position.x == 0 + player_size.x / 2 or position.x == screen_size.x - player_size.x / 2:
+		velocity.x = 0
 	
 	if velocity.x != 0:
 		$AnimatedSprite2D.flip_h = velocity.x < 0
