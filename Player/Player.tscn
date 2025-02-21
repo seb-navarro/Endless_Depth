@@ -156,6 +156,4 @@ polygon = PackedVector2Array(-30, 12, -26, 12, -24, 12, -9, 22, 14, 22, 30, 11, 
 [node name="HitTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
 [connection signal="timeout" from="HitTimer" to="." method="_on_hit_timer_timeout"]

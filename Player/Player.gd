@@ -3,8 +3,8 @@ extends CharacterBody2D
 signal hit
 
 var screen_size
-var gravity = 2000
 var speed = 100
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,9 +14,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var direction = 0
 	
-	velocity.y = gravity * delta
+	var direction = 0
 	
 	if Input.is_action_pressed("move_right"):
 		direction += 1
@@ -48,8 +47,8 @@ func check_collision():
 	if get_slide_collision_count() > 0:
 		hit.emit()
 		$AnimatedSprite2D.animation = "submarine_hit"
-		$HitTimer.start()
 		$CollisionPolygon2D.disabled = true
+		$HitTimer.start()
 
 
 
