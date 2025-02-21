@@ -6,8 +6,6 @@ signal hit
 var screen_size
 var down = 1000
 var velocity = Vector2.ZERO
-var currentposx
-var is_moving = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -53,7 +51,6 @@ func _on_body_entered(body: Node2D) -> void:
 	hit.emit()
 	$AnimatedSprite2D.animation = "submarine_hit"
 	$HitTimer.start()
-
 
 func start(pos):
 	position = pos
