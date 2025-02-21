@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2roys1sxfvi5"]
+
+[ext_resource type="Script" path="res://Background/parallax_background.gd" id="1_c7xsh"]
+[ext_resource type="Texture2D" uid="uid://yyqdpggpco8p" path="res://assets/art/environment/water background-1.png (1).png" id="1_tbxi6"]
+[ext_resource type="Texture2D" uid="uid://bpxpl6hyvebwj" path="res://assets/art/environment/Depth Flag-1.png.png" id="2_vnsyi"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+script = ExtResource("1_c7xsh")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(0, 720)
+
+[node name="WaterBackground" type="TextureRect" parent="ParallaxLayer"]
+offset_right = 480.0
+offset_bottom = 720.0
+texture = ExtResource("1_tbxi6")
+stretch_mode = 1
+
+[node name="Test" type="TextureRect" parent="ParallaxLayer"]
+offset_left = 80.0
+offset_top = 664.0
+offset_right = 160.0
+offset_bottom = 744.0
+texture = ExtResource("2_vnsyi")
+stretch_mode = 1

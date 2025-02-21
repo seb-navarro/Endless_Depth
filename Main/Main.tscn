@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://wp7styrjr6eh" path="res://Player/Player.tscn" id="1_75qh5"]
 [ext_resource type="Script" path="res://Main/main.gd" id="1_bguby"]
 [ext_resource type="PackedScene" uid="uid://1u56hh1j6n4d" path="res://Enemies/BadFish/BadFish.tscn" id="2_22who"]
-[ext_resource type="Texture2D" uid="uid://yyqdpggpco8p" path="res://assets/art/environment/water background-1.png (1).png" id="3_u7hiy"]
 [ext_resource type="PackedScene" uid="uid://bw0ocppp3257y" path="res://HUD/hud.tscn" id="4_74q7b"]
+[ext_resource type="PackedScene" uid="uid://b2roys1sxfvi5" path="res://Background/parallax_background.tscn" id="5_hywl2"]
 
 [sub_resource type="Curve2D" id="Curve2D_loo8f"]
 _data = {
@@ -15,12 +15,6 @@ point_count = 4
 [node name="main" type="Node"]
 script = ExtResource("1_bguby")
 enemy_scene = ExtResource("2_22who")
-
-[node name="WaterBackground" type="TextureRect" parent="."]
-offset_right = 480.0
-offset_bottom = 720.0
-texture = ExtResource("3_u7hiy")
-stretch_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("1_75qh5")]
 position = Vector2(240, 200)
@@ -48,6 +42,8 @@ position = Vector2(480, 344)
 rotation = 1.5708
 
 [node name="HUD" parent="." instance=ExtResource("4_74q7b")]
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("5_hywl2")]
 
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]

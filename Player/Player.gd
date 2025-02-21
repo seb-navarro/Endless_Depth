@@ -32,11 +32,15 @@ func _process(delta: float) -> void:
 	$AnimatedSprite2D.play()
 	
 	position += velocity * delta
-	position = position.clamp(Vector2.ZERO, screen_size)
+	
+	var player_size = Vector2(64, 64)
+	
+	position.x = clamp(position.x, 0 + player_size.x / 2, screen_size.x - player_size.x / 2)
+	#position.y = clamp(position.x, 0 + player_size.y / 2, screen_size.y - player_size.y / 2)
+	#position = position.clamp(Vector2.ZERO, screen_size)
 	
 	if velocity.x != 0:
 		$AnimatedSprite2D.flip_h = velocity.x < 0
-
 
 
 
@@ -46,6 +50,7 @@ func check_collision():
 		$AnimatedSprite2D.animation = "submarine_hit"
 		$HitTimer.start()
 		$CollisionPolygon2D.disabled = true
+
 
 
 func start(pos):
