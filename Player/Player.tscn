@@ -140,7 +140,7 @@ animations = [{
 "speed": 12.0
 }]
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="Area2D"]
 position = Vector2(234, 258)
 script = ExtResource("1_mxh4d")
 metadata/_edit_group_ = true
@@ -156,4 +156,5 @@ polygon = PackedVector2Array(-30, 12, -26, 12, -24, 12, -9, 22, 14, 22, 30, 11, 
 [node name="HitTimer" type="Timer" parent="."]
 one_shot = true
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="HitTimer" to="." method="_on_hit_timer_timeout"]
