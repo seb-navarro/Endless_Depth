@@ -1,10 +1,11 @@
-extends CharacterBody2D
+extends Area2D
 
 signal hit
 
+@export var speed = 5
 var screen_size
-var speed = 100
-var gravity = 5000
+var down = 1000
+var velocity = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,44 +15,37 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	var player_size = Vector2(64, 64)
 	
-	velocity.y = gravity * delta
+	velocity.y = down * delta
 	
-	var direction = 0
-	
-	if Input.is_action_pressed("move_right"):
-		direction += 1
+	if Input.is_action_pressed("move_right") and Input.is_action_pressed("move_left"):
+		velocity.y = down * delta * 4
+		$AnimatedSprite2D.speed_scale = 10
 	elif Input.is_action_pressed("move_left"):
-		direction -= 1
+		velocity.x -= speed
+		$AnimatedSprite2D.speed_scale = 1
+	elif Input.is_action_pressed("move_right"):
+		velocity.x += speed
+		$AnimatedSprite2D.speed_scale = 1
+	else:
+		$AnimatedSprite2D.speed_scale = 1
 	
-	velocity.x = direction * speed
-	
-	move_and_slide()
-	
-	check_collision()
 	
 	$AnimatedSprite2D.play()
 	
 	position += velocity * delta
 	
-	var player_size = Vector2(64, 64)
-	
 	position.x = clamp(position.x, 0 + player_size.x / 2, screen_size.x - player_size.x / 2)
-	#position.y = clamp(position.x, 0 + player_size.y / 2, screen_size.y - player_size.y / 2)
-	#position = position.clamp(Vector2.ZERO, screen_size)
 	
 	if velocity.x != 0:
 		$AnimatedSprite2D.flip_h = velocity.x < 0
 
 
-
-func check_collision():
-	if get_slide_collision_count() > 0:
-		hit.emit()
-		$AnimatedSprite2D.animation = "submarine_hit"
-		$CollisionPolygon2D.disabled = true
-		$HitTimer.start()
-
+func _on_body_entered(body: Node2D) -> void:
+	hit.emit()
+	$AnimatedSprite2D.animation = "submarine_hit"
+	$HitTimer.start()
 
 
 func start(pos):
@@ -62,4 +56,3 @@ func start(pos):
 
 func _on_hit_timer_timeout() -> void:
 	$AnimatedSprite2D.animation = "submarine"
-	$CollisionPolygon2D.disabled = false
