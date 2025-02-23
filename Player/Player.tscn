@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://wp7styrjr6eh"]
+[gd_scene load_steps=36 format=3 uid="uid://wp7styrjr6eh"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_mxh4d"]
 [ext_resource type="Texture2D" uid="uid://cypp1sy3t8esr" path="res://assets/art/player/Submarine (Right) - Endless Depth/submarine_right_00.png" id="2_4iguf"]
@@ -31,7 +31,8 @@
 [ext_resource type="Texture2D" uid="uid://ceo82bkoq5a73" path="res://assets/art/player/Submarine (down-right) - Endless Depth/submarine_down_right_13.png" id="29_6ytyh"]
 [ext_resource type="Texture2D" uid="uid://bj0xomaxo8mcn" path="res://assets/art/player/Submarine (hit2).png" id="30_p0kt1"]
 [ext_resource type="Texture2D" uid="uid://fsl1xjlwvcql" path="res://assets/art/player/Submarine (Hit3).png" id="31_satwg"]
-[ext_resource type="PackedScene" uid="uid://tloknn2slv1w" path="res://Camera/camera_2d.tscn" id="32_l4158"]
+[ext_resource type="Script" path="res://Camera/camera_2d.gd" id="32_bkscu"]
+[ext_resource type="PackedScene" uid="uid://1u56hh1j6n4d" path="res://Enemies/BadFish/BadFish.tscn" id="33_ygo5y"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ntpu6"]
 animations = [{
@@ -141,6 +142,12 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="Curve2D" id="Curve2D_ntay2"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -240, -360, 0, 0, 0, 0, 240, -360, 0, 0, 0, 0, 240, 360, 0, 0, 0, 0, -240, 360, 0, 0, 0, 0, -240, -360)
+}
+point_count = 5
+
 [node name="Player" type="Area2D"]
 position = Vector2(240, 360)
 script = ExtResource("1_mxh4d")
@@ -157,7 +164,19 @@ polygon = PackedVector2Array(-30, 12, -26, 12, -24, 12, -9, 22, 14, 22, 30, 11, 
 wait_time = 0.5
 one_shot = true
 
-[node name="Camera2D" parent="." instance=ExtResource("32_l4158")]
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("32_bkscu")
+enemy_scene = ExtResource("33_ygo5y")
+
+[node name="EnemyTimer" type="Timer" parent="Camera2D"]
+wait_time = 0.5
+
+[node name="EnemyPath" type="Path2D" parent="Camera2D"]
+curve = SubResource("Curve2D_ntay2")
+
+[node name="EnemySpawnLocation" type="PathFollow2D" parent="Camera2D/EnemyPath"]
+position = Vector2(-240, -360)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="HitTimer" to="." method="_on_hit_timer_timeout"]
+[connection signal="timeout" from="Camera2D/EnemyTimer" to="Camera2D" method="_on_enemy_timer_timeout"]
