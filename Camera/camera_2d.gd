@@ -6,7 +6,9 @@ extends Camera2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	var screen_width = get_viewport().size.x
+	limit_left = 0
+	limit_right = screen_width
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -16,6 +18,7 @@ func _process(delta: float) -> void:
 
 
 func _on_enemy_timer_timeout() -> void:
+	
 	var enemy = enemy_scene.instantiate()
 	
 	var enemy_spawn_location = $EnemyPath/EnemySpawnLocation
