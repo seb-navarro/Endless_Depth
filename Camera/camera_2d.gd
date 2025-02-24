@@ -34,7 +34,7 @@ func _on_enemy_timer_timeout() -> void:
 	direction += randf_range(-PI / 4, PI / 4)
 	enemy.rotation = direction
 
-	var velocity = Vector2(randf_range(150.0, 250.0), 0.0)
+	var velocity = Vector2(randf_range(200, 300), 0)
 	enemy.linear_velocity = velocity.rotated(direction)
 
 	var sprite = enemy.get_node("AnimatedSprite2D")
