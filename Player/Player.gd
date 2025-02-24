@@ -17,7 +17,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var player_size = Vector2(64, 64)
 	
-	var currentpos = position.x
 	
 	velocity.y = down * delta
 	
