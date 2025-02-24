@@ -1,7 +1,8 @@
 extends Camera2D
 
 @export var enemy_scene: PackedScene
-
+@export var rock_scene: PackedScene
+@export var metal_scene: PackedScene
 
 
 # Called when the node enters the scene tree for the first time.
@@ -42,3 +43,13 @@ func _on_enemy_timer_timeout() -> void:
 		sprite.flip_v = true
 
 	add_child(enemy)
+	
+
+
+func _on_obstacle_timer_timeout() -> void:
+	var choice = randf()
+	
+	if choice > 0.5:
+		var obstacle_scene = rock_scene
+	else:
+		var obstacle_scene = metal_scene
