@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bw0ocppp3257y" path="res://HUD/hud.tscn" id="4_74q7b"]
 [ext_resource type="PackedScene" uid="uid://b2roys1sxfvi5" path="res://Background/parallax_background.tscn" id="5_hywl2"]
 
-[node name="Mains" type="Node"]
+[node name="Main" type="Node"]
 script = ExtResource("1_bguby")
 
 [node name="Player" parent="." instance=ExtResource("1_75qh5")]
