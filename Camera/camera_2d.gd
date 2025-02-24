@@ -36,4 +36,9 @@ func _on_enemy_timer_timeout() -> void:
 	var velocity = Vector2(randf_range(150.0, 250.0), 0.0)
 	enemy.linear_velocity = velocity.rotated(direction)
 
+	var sprite = enemy.get_node("AnimatedSprite2D")
+
+	if enemy_spawn_location.progress_ratio > 0.5:
+		sprite.flip_v = true
+
 	add_child(enemy)
