@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://blt4en04tvu33"]
+[gd_scene load_steps=2 format=3 uid="uid://blt4en04tvu33"]
+
+[ext_resource type="Texture2D" uid="uid://n3umsrt60goi" path="res://assets/art/environment/sky-1.png.png" id="1_85li0"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -28,3 +30,9 @@ offset_bottom = 23.0
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 480.0
+offset_bottom = 720.0
+texture = ExtResource("1_85li0")
