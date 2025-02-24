@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://xwrawm2q50k2" path="res://assets/art/obstacles/Rock-1.png.png" id="1_04i8a"]
 
 [node name="RockObstacle" type="RigidBody2D"]
+collision_mask = 0
+gravity_scale = 0.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_04i8a")

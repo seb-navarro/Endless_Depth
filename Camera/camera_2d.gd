@@ -41,15 +41,31 @@ func _on_enemy_timer_timeout() -> void:
 
 	if enemy_spawn_location.progress_ratio > 0.5:
 		sprite.flip_v = true
-
+		
 	add_child(enemy)
 	
-
+	
 
 func _on_obstacle_timer_timeout() -> void:
 	var choice = randf()
+	var obstacle
+	var screen_height = get_viewport().size.y
 	
 	if choice > 0.5:
-		var obstacle_scene = rock_scene
+		obstacle = rock_scene.instantiate()
 	else:
-		var obstacle_scene = metal_scene
+		obstacle = metal_scene.instantiate()
+	
+	var obstacle_spawn_location = $ObstaclePath/ObstacleSpawnLocation
+	obstacle_spawn_location.progress_ratio = randf()
+	
+	obstacle.rotation = randf_range(0, 360)
+	
+	obstacle.position = obstacle_spawn_location.position
+	
+	obstacle.linear_velocity = Vector2(0, -50)
+	
+	
+	add_child(obstacle)
+	
+	

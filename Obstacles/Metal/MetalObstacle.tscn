@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://4v6ihe2maj7u" path="res://assets/art/obstacles/Rusted Metal-1.png.png" id="1_tn20a"]
 
 [node name="MetalObstacle" type="RigidBody2D"]
+collision_mask = 0
+gravity_scale = 0.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_tn20a")
