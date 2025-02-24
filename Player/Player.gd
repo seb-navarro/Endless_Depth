@@ -47,6 +47,8 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
+	collision_layer = 0
+	collision_mask = 0
 	hit.emit()
 	$AnimatedSprite2D.animation = "submarine_hit"
 	$HitTimer.start()
@@ -54,8 +56,9 @@ func _on_body_entered(body: Node2D) -> void:
 func start(pos):
 	position = pos
 	show()
-	$CollisionPolygon2D.disabled = false
 
 
 func _on_hit_timer_timeout() -> void:
 	$AnimatedSprite2D.animation = "submarine"
+	collision_layer = 1
+	collision_mask = 1
