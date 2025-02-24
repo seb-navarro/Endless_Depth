@@ -16,11 +16,7 @@ func _process(delta: float) -> void:
 	$HUD/FuelGauge.value = fuel
 	
 	$FuelDeplete.wait_time = 1
-	$DepthTimer.wait_time = 1
-	
-	if Input.is_action_pressed("move_left") and Input.is_action_pressed("move_right"):
-		$FuelDeplete.wait_time = $FuelDeplete.wait_time * 0.5
-		$DepthTimer.wait_time = $DepthTimer.wait_time * 0.25
+	$DepthTimer.wait_time = 0.5
 
 
 func _on_player_hit() -> void:
@@ -53,3 +49,8 @@ func game_over():
 func _on_depth_timer_timeout() -> void:
 	depth += 1
 	$HUD.update_depth(depth)
+
+
+func _on_player_boost() -> void:
+	$FuelDeplete.wait_time = $FuelDeplete.wait_time * 0.5
+	$DepthTimer.wait_time = $DepthTimer.wait_time * 0.25

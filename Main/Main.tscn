@@ -12,12 +12,14 @@ script = ExtResource("1_bguby")
 position = Vector2(240, 200)
 
 [node name="FuelDeplete" type="Timer" parent="."]
+wait_time = 0.5
 
 [node name="StartTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
 
 [node name="DepthTimer" type="Timer" parent="."]
+wait_time = 0.5
 
 [node name="StartPosition" type="Marker2D" parent="."]
 position = Vector2(240, 200)
@@ -26,6 +28,7 @@ position = Vector2(240, 200)
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("5_hywl2")]
 
+[connection signal="boost" from="Player" to="." method="_on_player_boost"]
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="timeout" from="FuelDeplete" to="." method="_on_fuel_deplete_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]

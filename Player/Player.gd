@@ -1,10 +1,11 @@
 extends Area2D
 
 signal hit
+signal boost
 
 @export var speed = 5
 var screen_size
-var down = 1000
+var down = 3000
 var velocity = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
@@ -23,6 +24,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("move_right") and Input.is_action_pressed("move_left"):
 		velocity.y = down * delta * 4
 		$AnimatedSprite2D.speed_scale = 10
+		boost.emit()
 	elif Input.is_action_pressed("move_left"):
 		velocity.x -= speed
 		$AnimatedSprite2D.speed_scale = 1
@@ -52,6 +54,7 @@ func _on_body_entered(body: Node2D) -> void:
 	hit.emit()
 	$AnimatedSprite2D.animation = "submarine_hit"
 	$HitTimer.start()
+
 
 func start(pos):
 	position = pos
