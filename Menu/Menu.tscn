@@ -162,12 +162,34 @@ text = "ENDLESS DEPTH"
 uppercase = true
 
 [node name="StartButton" type="TouchScreenButton" parent="."]
+z_index = 1
 position = Vector2(20, 181)
 scale = Vector2(2.5, 2.5)
 texture_normal = ExtResource("3_hbhmf")
 texture_pressed = ExtResource("10_80bl0")
 
 [node name="StartLabel" type="Label" parent="StartButton"]
+anchors_preset = -1
+anchor_left = 0.15
+anchor_top = 0.333
+anchor_right = 0.884
+anchor_bottom = 0.666
+offset_top = 0.288
+offset_right = 0.0239906
+offset_bottom = -0.0240021
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_h5yxf")
+theme_override_font_sizes/font_size = 25
+text = "START"
+uppercase = true
+
+[node name="StartButtonDisabled" type="TouchScreenButton" parent="."]
+position = Vector2(20, 181)
+scale = Vector2(2.5, 2.5)
+texture_normal = ExtResource("3_hbhmf")
+
+[node name="StartLabelDisabled" type="Label" parent="StartButtonDisabled"]
 anchors_preset = -1
 anchor_left = 0.15
 anchor_top = 0.333
@@ -252,11 +274,13 @@ text = "METERS"
 uppercase = true
 
 [node name="MenuTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 3.5
+one_shot = true
 
 [node name="Subamrine" type="AnimatedSprite2D" parent="."]
 position = Vector2(240, 470)
 sprite_frames = SubResource("SpriteFrames_3f7tx")
 animation = &"subamrine_menu"
 
-[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="released" from="StartButton" to="." method="_on_start_button_released"]
+[connection signal="timeout" from="MenuTimer" to="." method="_on_menu_timer_timeout"]
