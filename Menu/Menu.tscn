@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://blt4en04tvu33"]
+[gd_scene load_steps=26 format=3 uid="uid://blt4en04tvu33"]
 
 [ext_resource type="Texture2D" uid="uid://n3umsrt60goi" path="res://assets/art/environment/sky-1.png.png" id="1_85li0"]
 [ext_resource type="Script" path="res://Menu/menu.gd" id="1_qj7eo"]
@@ -11,6 +11,69 @@
 [ext_resource type="Texture2D" uid="uid://cypp1sy3t8esr" path="res://assets/art/player/Submarine (Right) - Endless Depth/submarine_right_00.png" id="6_ijf1r"]
 [ext_resource type="FontFile" uid="uid://c1rtvtnimcle0" path="res://assets/fonts/monogram.ttf" id="7_h5yxf"]
 [ext_resource type="Texture2D" uid="uid://bdlg3hto4mcmh" path="res://assets/art/environment/start-button-pressed.png" id="10_80bl0"]
+[ext_resource type="Texture2D" uid="uid://bhqlx0jj5xikj" path="res://assets/art/player/Submarine (Right) - Endless Depth/submarine_right_01.png" id="12_cvpox"]
+[ext_resource type="Texture2D" uid="uid://bv32ybts3lco" path="res://assets/art/player/Submarine (Right) - Endless Depth/submarine_right_02.png" id="13_mxm2x"]
+[ext_resource type="Texture2D" uid="uid://mfuc0f8f5jdk" path="res://assets/art/player/Submarine (Right) - Endless Depth/submarine_right_03.png" id="14_0q3gp"]
+[ext_resource type="Texture2D" uid="uid://c521g7sb36ona" path="res://assets/art/player/Submarine (Right) - Endless Depth/submarine_right_04.png" id="15_461at"]
+[ext_resource type="Texture2D" uid="uid://ba6jfr0cxgv73" path="res://assets/art/player/Submarine (Right) - Endless Depth/submarine_right_05.png" id="16_r5ll2"]
+[ext_resource type="Texture2D" uid="uid://dwlhcstfu7sgv" path="res://assets/art/player/Submarine (Right) - Endless Depth/submarine_right_06.png" id="17_ha16t"]
+[ext_resource type="Texture2D" uid="uid://g1fo40ubxspt" path="res://assets/art/player/Submarine (Right) - Endless Depth/submarine_right_07.png" id="18_ag1ke"]
+[ext_resource type="Texture2D" uid="uid://dxh1p0xcka8kt" path="res://assets/art/player/Submarine (Right) - Endless Depth/submarine_right_08.png" id="19_fo2g6"]
+[ext_resource type="Texture2D" uid="uid://cr2kfxbptxovf" path="res://assets/art/player/Submarine (Right) - Endless Depth/submarine_right_09.png" id="20_hpb1y"]
+[ext_resource type="Texture2D" uid="uid://dd36hl16cm0wr" path="res://assets/art/player/Submarine (Right) - Endless Depth/submarine_right_10.png" id="21_frlxy"]
+[ext_resource type="Texture2D" uid="uid://60q1qy72810e" path="res://assets/art/player/Submarine (Right) - Endless Depth/submarine_right_11.png" id="22_xr3gr"]
+[ext_resource type="Texture2D" uid="uid://cph7gbuxm68ni" path="res://assets/art/player/Submarine (Right) - Endless Depth/submarine_right_12.png" id="23_28qiq"]
+[ext_resource type="Texture2D" uid="uid://b0r2crdj2lmmd" path="res://assets/art/player/Submarine (Right) - Endless Depth/submarine_right_13.png" id="24_njhgv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3f7tx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_ijf1r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_cvpox")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_mxm2x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_0q3gp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_461at")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_r5ll2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_ha16t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_ag1ke")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_fo2g6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_hpb1y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_frlxy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_xr3gr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_28qiq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_njhgv")
+}],
+"loop": true,
+"name": &"subamrine_menu",
+"speed": 12.0
+}]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -78,19 +141,6 @@ offset_bottom = 0.0799866
 texture = ExtResource("5_0nkvc")
 expand_mode = 1
 stretch_mode = 1
-
-[node name="Submarine" type="TextureRect" parent="Background"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.433
-anchor_top = 0.604
-anchor_right = 0.567
-anchor_bottom = 0.693
-offset_left = 0.159988
-offset_top = 0.119965
-offset_right = -0.160004
-offset_bottom = 0.039978
-texture = ExtResource("6_ijf1r")
 
 [node name="Title" type="Label" parent="Background"]
 layout_mode = 1
@@ -200,5 +250,13 @@ theme_override_fonts/font = ExtResource("7_h5yxf")
 theme_override_font_sizes/font_size = 25
 text = "METERS"
 uppercase = true
+
+[node name="MenuTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="Subamrine" type="AnimatedSprite2D" parent="."]
+position = Vector2(240, 470)
+sprite_frames = SubResource("SpriteFrames_3f7tx")
+animation = &"subamrine_menu"
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
