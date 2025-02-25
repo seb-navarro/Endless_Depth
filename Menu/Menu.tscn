@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://blt4en04tvu33"]
+[gd_scene load_steps=11 format=3 uid="uid://blt4en04tvu33"]
 
 [ext_resource type="Texture2D" uid="uid://n3umsrt60goi" path="res://assets/art/environment/sky-1.png.png" id="1_85li0"]
+[ext_resource type="Script" path="res://Menu/menu.gd" id="1_qj7eo"]
 [ext_resource type="Texture2D" uid="uid://dey7cr2jke7bv" path="res://assets/art/environment/sun.png" id="2_aka0j"]
 [ext_resource type="Texture2D" uid="uid://55x675rh1bib" path="res://assets/art/environment/Button-1.png.png" id="3_hbhmf"]
 [ext_resource type="Texture2D" uid="uid://tpftma0gxx2b" path="res://assets/art/environment/water_background_surface.png" id="3_it0t1"]
@@ -8,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://yyqdpggpco8p" path="res://assets/art/environment/water background-1.png (1).png" id="4_sep0v"]
 [ext_resource type="Texture2D" uid="uid://c8xummau7d07s" path="res://assets/art/environment/Wooden Bridge-1.png.png" id="5_0nkvc"]
 [ext_resource type="Texture2D" uid="uid://cypp1sy3t8esr" path="res://assets/art/player/Submarine (Right) - Endless Depth/submarine_right_00.png" id="6_ijf1r"]
+[ext_resource type="FontFile" uid="uid://c1rtvtnimcle0" path="res://assets/fonts/monogram.ttf" id="7_h5yxf"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -16,80 +18,192 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_qj7eo")
 
 [node name="Background" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 480.0
-offset_bottom = 720.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 texture = ExtResource("1_85li0")
 
 [node name="Sun" type="TextureRect" parent="Background"]
 custom_minimum_size = Vector2(181, 181)
-layout_mode = 0
-offset_left = 140.0
-offset_right = 321.0
-offset_bottom = 181.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.292
+anchor_right = 0.669
+anchor_bottom = 0.251
+offset_left = -0.160019
+offset_right = -0.120026
+offset_bottom = 0.279984
 texture = ExtResource("2_aka0j")
 
 [node name="WaterTop" type="TextureRect" parent="Background"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.667
+anchor_right = 1.0
+anchor_bottom = 0.711
 offset_left = 3.0
-offset_top = 480.0
-offset_right = 480.0
-offset_bottom = 512.0
+offset_top = -0.240051
+offset_bottom = 0.0799866
 texture = ExtResource("3_it0t1")
 stretch_mode = 1
 
 [node name="Water" type="TextureRect" parent="Background"]
-layout_mode = 0
-offset_top = 508.0
-offset_right = 480.0
-offset_bottom = 720.0
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.706
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -0.320007
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("4_sep0v")
 stretch_mode = 1
 
 [node name="Bridge" type="TextureRect" parent="Background"]
-layout_mode = 0
-offset_top = 480.0
-offset_right = 161.0
-offset_bottom = 512.0
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.667
+anchor_right = 0.402
+anchor_bottom = 0.711
+offset_top = -0.240051
+offset_right = 0.0399933
+offset_bottom = 0.0799866
 texture = ExtResource("5_0nkvc")
 expand_mode = 1
 stretch_mode = 1
 
 [node name="Submarine" type="TextureRect" parent="Background"]
-layout_mode = 0
-offset_left = 227.0
-offset_top = 433.0
-offset_right = 291.0
-offset_bottom = 497.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.433
+anchor_top = 0.604
+anchor_right = 0.567
+anchor_bottom = 0.693
+offset_left = 0.159988
+offset_top = 0.119965
+offset_right = -0.160004
+offset_bottom = 0.039978
 texture = ExtResource("6_ijf1r")
+
+[node name="Title" type="Label" parent="Background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.098
+anchor_top = 0.151
+anchor_right = 0.86
+anchor_bottom = 0.235
+offset_left = -0.0400009
+offset_top = 0.279991
+offset_right = 0.199982
+offset_bottom = -0.200012
+theme_override_colors/font_color = Color(0.917647, 0.282353, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_h5yxf")
+theme_override_font_sizes/font_size = 75
+text = "ENDLESS DEPTH"
+uppercase = true
 
 [node name="StartButton" type="TextureButton" parent="."]
 custom_minimum_size = Vector2(164, 164)
 layout_mode = 2
-offset_left = 20.0
-offset_top = 181.0
-offset_right = 184.0
-offset_bottom = 345.0
+anchor_left = 0.042
+anchor_top = 0.251
+anchor_right = 0.383
+anchor_bottom = 0.479
+offset_left = -0.160002
+offset_top = 0.279984
+offset_right = 0.159988
+offset_bottom = 0.119965
 texture_normal = ExtResource("3_hbhmf")
 stretch_mode = 0
+
+[node name="StartLabel" type="Label" parent="StartButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.165
+anchor_top = 0.372
+anchor_right = 0.854
+anchor_bottom = 0.665
+offset_left = -0.0600014
+offset_top = -0.00800323
+offset_right = -0.0559998
+offset_bottom = -0.0600052
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_h5yxf")
+theme_override_font_sizes/font_size = 60
+text = "START"
+uppercase = true
 
 [node name="PersonalBestTexture" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(126, 126)
 layout_mode = 2
-offset_left = 296.0
-offset_top = 181.0
-offset_right = 460.0
-offset_bottom = 345.0
+anchor_left = 0.617
+anchor_top = 0.251
+anchor_right = 0.958
+anchor_bottom = 0.479
+offset_left = -0.160034
+offset_top = 0.279984
+offset_right = 0.159973
+offset_bottom = 0.119965
 texture = ExtResource("4_rhayp")
 
 [node name="PersonalBestLabel" type="Label" parent="PersonalBestTexture"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.207
+anchor_top = 0.201
+anchor_right = 0.817
+anchor_bottom = 0.61
+offset_left = 0.0519981
+offset_top = 0.0359993
+offset_right = 0.0119934
+offset_bottom = -0.0400009
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_h5yxf")
+theme_override_font_sizes/font_size = 35
+text = "PERSONAL BEST:"
+horizontal_alignment = 1
+autowrap_mode = 2
+uppercase = true
 
 [node name="PersonalBestValue" type="Label" parent="PersonalBestTexture"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.195
+anchor_top = 0.573
+anchor_right = 0.823
+anchor_bottom = 0.75
+offset_left = 0.0199986
+offset_top = 0.0279999
+offset_right = 0.0279999
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_h5yxf")
+theme_override_font_sizes/font_size = 35
+text = "0"
+horizontal_alignment = 1
+
+[node name="PersonalBestMeters" type="Label" parent="PersonalBestTexture"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.341
+anchor_top = 0.744
+anchor_right = 0.683
+anchor_bottom = 0.872
+offset_left = 0.0759964
+offset_top = -0.0160065
+offset_right = -0.012001
+offset_bottom = -0.00801086
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_h5yxf")
+theme_override_font_sizes/font_size = 25
+text = "METERS"
+uppercase = true
