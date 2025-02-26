@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://blt4en04tvu33"]
+[gd_scene load_steps=30 format=3 uid="uid://blt4en04tvu33"]
 
 [ext_resource type="Texture2D" uid="uid://n3umsrt60goi" path="res://assets/art/environment/sky-1.png.png" id="1_85li0"]
 [ext_resource type="Script" path="res://Menu/menu.gd" id="1_qj7eo"]
@@ -74,6 +74,58 @@ animations = [{
 "name": &"subamrine_menu",
 "speed": 12.0
 }]
+
+[sub_resource type="Animation" id="Animation_4p5jg"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_fx8qt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nlrfa"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.966667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ehyyo"]
+_data = {
+"RESET": SubResource("Animation_fx8qt"),
+"fade_in": SubResource("Animation_nlrfa"),
+"fade_out": SubResource("Animation_4p5jg")
+}
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -282,5 +334,27 @@ position = Vector2(240, 470)
 sprite_frames = SubResource("SpriteFrames_3f7tx")
 animation = &"subamrine_menu"
 
+[node name="Fade" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Fade"]
+modulate = Color(0, 0, 0, 0)
+z_index = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.003
+offset_bottom = -0.160034
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Fade"]
+root_node = NodePath("../ColorRect")
+libraries = {
+"": SubResource("AnimationLibrary_ehyyo")
+}
+
+[node name="AnimationTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="released" from="StartButton" to="." method="_on_start_button_released"]
 [connection signal="timeout" from="MenuTimer" to="." method="_on_menu_timer_timeout"]
+[connection signal="timeout" from="AnimationTimer" to="." method="_on_animation_timer_timeout"]
