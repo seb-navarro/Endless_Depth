@@ -18,7 +18,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var player_size = Vector2(64, 64)
 	
-	
 	velocity.y = down * delta
 	
 	if Input.is_action_pressed("move_right") and Input.is_action_pressed("move_left"):
@@ -38,6 +37,7 @@ func _process(delta: float) -> void:
 	$AnimatedSprite2D.play()
 	
 	position += velocity * delta
+	
 	
 	position.x = clamp(position.x, 0 + player_size.x / 2, screen_size.x - player_size.x / 2)
 	

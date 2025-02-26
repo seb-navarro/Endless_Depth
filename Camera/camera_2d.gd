@@ -17,7 +17,6 @@ func _process(delta: float) -> void:
 	pass
 
 
-
 func _on_enemy_timer_timeout() -> void:
 	
 	var enemy = enemy_scene.instantiate()
@@ -62,7 +61,6 @@ func _on_obstacle_timer_timeout() -> void:
 	obstacle.position = obstacle_spawn_location.position
 	
 	obstacle.linear_velocity = Vector2(0, -50)
-	
 	
 	add_child(obstacle)
 	

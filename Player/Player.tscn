@@ -173,6 +173,8 @@ wait_time = 0.5
 one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+position_smoothing_speed = 2.5
 script = ExtResource("32_bkscu")
 enemy_scene = ExtResource("33_ygo5y")
 rock_scene = ExtResource("34_llug6")
