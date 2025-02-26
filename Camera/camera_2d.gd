@@ -16,7 +16,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
 func _on_enemy_timer_timeout() -> void:
 	
 	var enemy = enemy_scene.instantiate()

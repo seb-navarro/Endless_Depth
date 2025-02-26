@@ -4,13 +4,11 @@ signal hit
 signal boost
 
 @export var speed = 5
-var screen_size
 var down = 3000
 var velocity = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	screen_size = get_viewport_rect().size
 	$AnimatedSprite2D.animation = "submarine"
 
 
@@ -38,10 +36,17 @@ func _process(delta: float) -> void:
 	
 	position += velocity * delta
 	
+	#Code below implements player traversing horizontaly offscreen
+	#
+	#
+	#if position.x < -player_size.x / 2:
+	#	position.x = Global.screen_width + player_size.x / 2
+	#elif position.x > Global.screen_width + player_size.x / 2:
+	#	position.x = -player_size.x / 2
 	
-	position.x = clamp(position.x, 0 + player_size.x / 2, screen_size.x - player_size.x / 2)
+	position.x = clamp(position.x, 0 + player_size.x / 2, Global.screen_width - player_size.x / 2)
 	
-	if position.x == 0 + player_size.x / 2 or position.x == screen_size.x - player_size.x / 2:
+	if position.x == 0 + player_size.x / 2 or position.x == Global.screen_width - player_size.x / 2:
 		velocity.x = 0
 	
 	if velocity.x != 0:
