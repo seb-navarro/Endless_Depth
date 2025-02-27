@@ -8,11 +8,12 @@ func _ready() -> void:
 	$Fade/ColorRect.visible = true
 	transition_in()
 	new_game()
+	$Spawner.position = $Player.position
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	$Spawner.position = $Player.position
+	$Spawner.position.y = $Player.position.y
 	
 	if fuel <= 0:
 		game_over()
