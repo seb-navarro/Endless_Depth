@@ -45,7 +45,6 @@ func _on_enemy_timer_timeout() -> void:
 func _on_obstacle_timer_timeout() -> void:
 	var choice = randf()
 	var obstacle
-	var screen_height = get_viewport().size.y
 	
 	if choice > 0.5:
 		obstacle = rock_scene.instantiate()
