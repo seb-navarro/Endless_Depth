@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dliulwqq7o3kf"]
+[gd_scene load_steps=9 format=3 uid="uid://dliulwqq7o3kf"]
 
 [ext_resource type="PackedScene" uid="uid://wp7styrjr6eh" path="res://Player/Player.tscn" id="1_75qh5"]
 [ext_resource type="Script" path="res://Main/main.gd" id="1_bguby"]
 [ext_resource type="PackedScene" uid="uid://bw0ocppp3257y" path="res://HUD/hud.tscn" id="4_74q7b"]
 [ext_resource type="PackedScene" uid="uid://b2roys1sxfvi5" path="res://Background/parallax_background.tscn" id="5_hywl2"]
+[ext_resource type="PackedScene" uid="uid://btbk8wv3nrdx" path="res://Spawner/Spawner.tscn" id="5_mluvq"]
 
 [sub_resource type="Animation" id="Animation_5r7q8"]
 length = 0.001
@@ -79,6 +80,9 @@ color = Color(0, 0, 0, 1)
 libraries = {
 "": SubResource("AnimationLibrary_bo4yt")
 }
+
+[node name="Spawner" parent="." instance=ExtResource("5_mluvq")]
+position = Vector2(240, 211)
 
 [connection signal="boost" from="Player" to="." method="_on_player_boost"]
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]

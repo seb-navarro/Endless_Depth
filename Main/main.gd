@@ -12,6 +12,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	$Spawner.position = $Player.position
+	
 	if fuel <= 0:
 		game_over()
 	
@@ -35,14 +37,14 @@ func _on_fuel_deplete_timeout() -> void:
 
 
 func _on_start_timer_timeout() -> void:
-	$Player/Camera2D/EnemyTimer.start()
-	$Player/Camera2D/ObstacleTimer.start()
+	$Spawner/EnemyTimer.start()
+	$Spawner/ObstacleTimer.start()
 	$FuelDeplete.start()
 	$DepthTimer.start()
 
 func game_over():
-	$Player/Camera2D/EnemyTimer.stop()
-	$Player/Camera2D/ObstacleTimer.stop()
+	$Spawner/EnemyTimer.stop()
+	$Spawner/ObstacleTimer.stop()
 	$FuelDeplete.stop()
 	$DepthTimer.stop()
 	$HUD.show_game_over()

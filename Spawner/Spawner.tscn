@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://btbk8wv3nrdx"]
+
+[ext_resource type="Script" path="res://Spawner/spawner.gd" id="1_wlpt7"]
+[ext_resource type="PackedScene" uid="uid://1u56hh1j6n4d" path="res://Enemies/BadFish/BadFish.tscn" id="2_8vw8w"]
+[ext_resource type="PackedScene" uid="uid://rnvcgkfjx7qt" path="res://Obstacles/Rock/RockObstacle.tscn" id="3_5dg2d"]
+[ext_resource type="PackedScene" uid="uid://ct1wxhf3folve" path="res://Obstacles/Metal/MetalObstacle.tscn" id="4_0cllb"]
+
+[sub_resource type="Curve2D" id="Curve2D_x31oy"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -400, 520, 0, 0, 0, 0, -400, -520, 0, 0, 0, 0, 400, -520, 0, 0, 0, 0, 400, 520)
+}
+point_count = 4
+
+[sub_resource type="Curve2D" id="Curve2D_37u3r"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -240, 600, 0, 0, 0, 0, 240, 600)
+}
+point_count = 2
+
+[node name="Spawner" type="Node2D"]
+script = ExtResource("1_wlpt7")
+enemy_scene = ExtResource("2_8vw8w")
+rock_scene = ExtResource("3_5dg2d")
+metal_scene = ExtResource("4_0cllb")
+
+[node name="EnemyTimer" type="Timer" parent="."]
+
+[node name="EnemyPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_x31oy")
+
+[node name="EnemySpawnLocation" type="PathFollow2D" parent="EnemyPath"]
+position = Vector2(-400, 520)
+rotation = -1.5708
+
+[node name="ObstaclePath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_37u3r")
+
+[node name="ObstacleSpawnLocation" type="PathFollow2D" parent="ObstaclePath"]
+position = Vector2(-240, 600)
+
+[node name="ObstacleTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
+[connection signal="timeout" from="ObstacleTimer" to="." method="_on_obstacle_timer_timeout"]
