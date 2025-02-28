@@ -6,7 +6,7 @@ var depth = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Player.position.x = Global.screen_width / 2
-	$Player.position.y = Global.screen_height / 4
+	$Player.position.y = Global.screen_height / 2
 	$Fade/ColorRect.visible = true
 	transition_in()
 	new_game()

@@ -46,7 +46,6 @@ _data = {
 script = ExtResource("1_bguby")
 
 [node name="Player" parent="." instance=ExtResource("1_75qh5")]
-position = Vector2(240, 180)
 
 [node name="FuelDeplete" type="Timer" parent="."]
 wait_time = 0.5
@@ -79,7 +78,7 @@ libraries = {
 }
 
 [node name="Spawner" parent="." instance=ExtResource("5_mluvq")]
-position = Vector2(240, 180)
+position = Vector2(240, 360)
 
 [connection signal="boost" from="Player" to="." method="_on_player_boost"]
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
