@@ -152,12 +152,14 @@ position = Vector2(0, 560)
 scale = Vector2(2.5, 2.5)
 texture_normal = ExtResource("6_enq4h")
 texture_pressed = ExtResource("7_irc30")
+action = "move_left"
 
 [node name="Right" type="TouchScreenButton" parent="."]
 position = Vector2(320, 560)
 scale = Vector2(2.5, 2.5)
 texture_normal = ExtResource("8_d27mi")
 texture_pressed = ExtResource("9_q4pdr")
+action = "move_right"
 
 [node name="Slow" type="TouchScreenButton" parent="."]
 position = Vector2(178, 592)
