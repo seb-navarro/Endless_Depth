@@ -2,11 +2,14 @@ extends Node
 
 var fuel = 100
 var depth = 0
+var gameover
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Player.position.x = Global.screen_width / 2
 	$Player.position.y = Global.screen_height / 2
+	gameover = false
 	$Fade/ColorRect.visible = true
 	transition_in()
 	new_game()
@@ -17,9 +20,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	$Spawner.position.y = $Player.position.y
 	
-	
-	if fuel <= 0:
-		game_over()
+	if gameover == false:
+		if fuel <= 0:
+			game_over()
 	
 	$HUD/FuelGauge.value = fuel
 	
@@ -51,6 +54,8 @@ func game_over():
 	$FuelDeplete.stop()
 	$DepthTimer.stop()
 	$HUD.show_game_over()
+	$Player/Camera2D.limit_bottom = $Player.position.y + $Player/Camera2D.get_viewport().size.y / 2
+	gameover = true
 
 
 func _on_depth_timer_timeout() -> void:
