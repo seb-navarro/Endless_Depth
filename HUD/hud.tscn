@@ -101,6 +101,24 @@ theme_override_font_sizes/font_size = 32
 text = "METERS"
 horizontal_alignment = 1
 
+[node name="MetersReached" type="Label" parent="."]
+z_index = 1
+anchors_preset = -1
+anchor_left = 0.417
+anchor_top = 0.368
+anchor_right = 0.6
+anchor_bottom = 0.406
+offset_left = -0.160019
+offset_top = 0.039978
+offset_bottom = -0.320007
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_io1tw")
+theme_override_font_sizes/font_size = 32
+text = "METERS"
+horizontal_alignment = 1
+
 [node name="MessageTimer" type="Timer" parent="."]
 wait_time = 15.0
 one_shot = true
@@ -128,14 +146,35 @@ vertical_alignment = 1
 
 [node name="PersonalBest" type="Label" parent="."]
 anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.328
-anchor_right = 0.5
-anchor_bottom = 0.328
-offset_left = -104.0
-offset_top = -15.16
-offset_right = 112.0
-offset_bottom = 10.84
+anchor_left = 0.29
+anchor_top = 0.444
+anchor_right = 0.729
+anchor_bottom = 0.489
+offset_left = 0.799988
+offset_top = 0.319977
+offset_right = 0.0799866
+offset_bottom = -0.0800171
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_io1tw")
+theme_override_font_sizes/font_size = 40
+text = "PERSONAL BEST!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DepthReached" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.3
+anchor_right = 0.75
+anchor_bottom = 0.336
+offset_left = -4.0
+offset_top = -1.00002
+offset_right = -4.00003
+offset_bottom = -0.920013
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -143,7 +182,28 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_io1tw")
 theme_override_font_sizes/font_size = 32
-text = "PERSONAL BEST!"
+text = "DEPTH REACHED:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DepthReachedValue" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.292
+anchor_top = 0.335
+anchor_right = 0.742
+anchor_bottom = 0.371
+offset_left = -0.160019
+offset_top = -0.200012
+offset_right = -0.160034
+offset_bottom = -0.120026
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_io1tw")
+theme_override_font_sizes/font_size = 32
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 

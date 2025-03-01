@@ -6,9 +6,11 @@ signal boost
 @export var speed = 5
 var down = 3000
 var velocity = Vector2.ZERO
+var finish = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	finish = false
 	$AnimatedSprite2D.animation = "submarine"
 
 
@@ -18,18 +20,26 @@ func _process(delta: float) -> void:
 	
 	velocity.y = down * delta
 	
-	if Input.is_action_pressed("move_right") and Input.is_action_pressed("move_left"):
-		velocity.y = down * delta * 4
-		$AnimatedSprite2D.speed_scale = 10
-		boost.emit()
-	elif Input.is_action_pressed("move_left"):
-		velocity.x -= speed
-		$AnimatedSprite2D.speed_scale = 1
-	elif Input.is_action_pressed("move_right"):
-		velocity.x += speed
-		$AnimatedSprite2D.speed_scale = 1
+	if finish == false:
+		if Input.is_action_pressed("move_right") and Input.is_action_pressed("move_left"):
+			velocity.y = down * delta * 4
+			$AnimatedSprite2D.speed_scale = 10
+			boost.emit()
+		elif Input.is_action_pressed("move_left"):
+			velocity.x -= speed
+			$AnimatedSprite2D.speed_scale = 1
+		elif Input.is_action_pressed("move_right"):
+			velocity.x += speed
+			$AnimatedSprite2D.speed_scale = 1
+		else:
+			$AnimatedSprite2D.speed_scale = 1
 	else:
+		velocity.x = 0
 		$AnimatedSprite2D.speed_scale = 1
+		$AnimatedSprite2D.animation = "sink"
+		velocity.y = down * delta * 2
+		collision_layer = 0
+		collision_mask = 0
 	
 	
 	$AnimatedSprite2D.play()
@@ -70,3 +80,7 @@ func _on_hit_timer_timeout() -> void:
 	$AnimatedSprite2D.animation = "submarine"
 	collision_layer = 1
 	collision_mask = 1
+	
+
+func over():
+	finish = true

@@ -5,6 +5,9 @@ extends CanvasLayer
 func _ready() -> void:
 	$Message.hide()
 	$PersonalBest.hide()
+	$DepthReached.hide()
+	$DepthReachedValue.hide()
+	$MetersReached.hide()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -19,7 +22,11 @@ func show_message(text, time):
 	$MessageTimer.start()
 	
 func show_game_over():
-	show_message("Game Over", 5)
+	show_message("Game Over", 15)
+	$DepthReached.show()
+	$DepthReachedValue.text = $DepthCounter.text
+	$DepthReachedValue.show()
+	$MetersReached.show()
 
 
 func show_refuelling():

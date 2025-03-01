@@ -54,7 +54,18 @@ func game_over():
 	$FuelDeplete.stop()
 	$DepthTimer.stop()
 	$HUD.show_game_over()
+	$HUD/Fuel.hide()
+	$HUD/FuelGauge.hide()
+	$HUD/Left.hide()
+	$HUD/Right.hide()
+	$HUD/Slow.hide()
+	$HUD/SlowLabel.hide()
+	$HUD/Depth.hide()
+	$HUD/DepthCounter.hide()
+	$HUD/DepthGauge.hide()
+	$HUD/Meters.hide()
 	$Player/Camera2D.limit_bottom = $Player.position.y + $Player/Camera2D.get_viewport().size.y / 2
+	$Player.over()
 	gameover = true
 
 
