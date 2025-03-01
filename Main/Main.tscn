@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dliulwqq7o3kf"]
+[gd_scene load_steps=10 format=3 uid="uid://dliulwqq7o3kf"]
 
 [ext_resource type="PackedScene" uid="uid://wp7styrjr6eh" path="res://Player/Player.tscn" id="1_75qh5"]
 [ext_resource type="Script" path="res://Main/main.gd" id="1_bguby"]
@@ -36,10 +36,26 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_jhmmf"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bo4yt"]
 _data = {
 "RESET": SubResource("Animation_5r7q8"),
-"fade_in": SubResource("Animation_qkdf8")
+"fade_in": SubResource("Animation_qkdf8"),
+"fade_out": SubResource("Animation_jhmmf")
 }
 
 [node name="Main" type="Node"]
@@ -77,6 +93,14 @@ libraries = {
 "": SubResource("AnimationLibrary_bo4yt")
 }
 
+[node name="FadeTimer" type="Timer" parent="Fade"]
+wait_time = 6.0
+one_shot = true
+
+[node name="TransitionTimer" type="Timer" parent="Fade"]
+wait_time = 2.0
+one_shot = true
+
 [node name="Spawner" parent="." instance=ExtResource("5_mluvq")]
 position = Vector2(240, 360)
 
@@ -85,3 +109,5 @@ position = Vector2(240, 360)
 [connection signal="timeout" from="FuelDeplete" to="." method="_on_fuel_deplete_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="DepthTimer" to="." method="_on_depth_timer_timeout"]
+[connection signal="timeout" from="Fade/FadeTimer" to="." method="_on_fade_timer_timeout"]
+[connection signal="timeout" from="Fade/TransitionTimer" to="." method="_on_transition_timer_timeout"]

@@ -4,6 +4,7 @@ var fuel = 100
 var depth = 0
 var gameover
 
+signal restart
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -64,6 +65,7 @@ func game_over():
 	$HUD/Meters.hide()
 	$Player/Camera2D.limit_bottom = $Player.position.y + $Player/Camera2D.get_viewport().size.y / 2
 	$Player.over()
+	$Fade/FadeTimer.start()
 	gameover = true
 
 
@@ -79,3 +81,19 @@ func _on_player_boost() -> void:
 func transition_in():
 	$Fade/ColorRect.visible = true
 	$Fade/AnimationPlayer.play("fade_in")
+
+func transition_out():
+	$Fade/ColorRect.visible = true
+	$Fade/AnimationPlayer.play("fade_out")
+	
+	
+
+
+func _on_fade_timer_timeout() -> void:
+	transition_out()
+	$Fade/TransitionTimer.start()
+
+
+func _on_transition_timer_timeout() -> void:
+	restart.emit()
+	get_tree().change_scene_to_file("res://Menu/Menu.tscn")

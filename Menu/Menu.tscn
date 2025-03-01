@@ -325,10 +325,6 @@ theme_override_font_sizes/font_size = 25
 text = "METERS"
 uppercase = true
 
-[node name="MenuTimer" type="Timer" parent="."]
-wait_time = 3.5
-one_shot = true
-
 [node name="Subamrine" type="AnimatedSprite2D" parent="."]
 position = Vector2(240, 470)
 sprite_frames = SubResource("SpriteFrames_3f7tx")
@@ -351,10 +347,13 @@ libraries = {
 "": SubResource("AnimationLibrary_ehyyo")
 }
 
-[node name="AnimationTimer" type="Timer" parent="."]
+[node name="TransitionTimer" type="Timer" parent="Fade"]
+one_shot = true
+
+[node name="FadeTimer" type="Timer" parent="Fade"]
 wait_time = 2.0
 one_shot = true
 
 [connection signal="released" from="StartButton" to="." method="_on_start_button_released"]
-[connection signal="timeout" from="MenuTimer" to="." method="_on_menu_timer_timeout"]
-[connection signal="timeout" from="AnimationTimer" to="." method="_on_animation_timer_timeout"]
+[connection signal="timeout" from="Fade/TransitionTimer" to="." method="_on_menu_timer_timeout"]
+[connection signal="timeout" from="Fade/FadeTimer" to="." method="_on_animation_timer_timeout"]

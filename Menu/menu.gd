@@ -21,15 +21,16 @@ func _on_menu_timer_timeout() -> void:
 
 
 func _on_start_button_released() -> void:
-	$MenuTimer.start()
-	$AnimationTimer.start()
+	$Fade/FadeTimer.start()
 	pressed = true
 	$StartButton.visible = false
 
 func transition_out():
 	$Fade/ColorRect.visible = true
 	$Fade/AnimationPlayer.play("fade_out")
+	$Fade/TransitionTimer.start()
 	
 
 func _on_animation_timer_timeout() -> void:
 	transition_out()
+	
