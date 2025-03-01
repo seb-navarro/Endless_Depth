@@ -8,8 +8,8 @@ const save_path = "user://player_high_score.save"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	screen_width = get_viewport().size.x
-	screen_height = get_viewport().size.y
+	screen_width = get_viewport().get_visible_rect().size.x
+	screen_height = get_viewport().get_visible_rect().size.y
 	load_score()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -67,7 +67,7 @@ func game_over():
 	$HUD/DepthCounter.hide()
 	$HUD/DepthGauge.hide()
 	$HUD/Meters.hide()
-	$Player/Camera2D.limit_bottom = $Player.position.y + $Player/Camera2D.get_viewport().size.y / 2
+	$Player/Camera2D.limit_bottom = $Player.position.y + $Player/Camera2D.get_viewport().get_visible_rect().size.y / 2
 	$Player.over()
 	$Fade/FadeTimer.start()
 	gameover = true
