@@ -58,8 +58,6 @@ func game_over():
 	$HUD/FuelGauge.hide()
 	$HUD/Left.hide()
 	$HUD/Right.hide()
-	$HUD/Slow.hide()
-	$HUD/SlowLabel.hide()
 	$HUD/Depth.hide()
 	$HUD/DepthCounter.hide()
 	$HUD/DepthGauge.hide()

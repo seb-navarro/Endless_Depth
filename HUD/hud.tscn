@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bw0ocppp3257y"]
+[gd_scene load_steps=10 format=3 uid="uid://bw0ocppp3257y"]
 
 [ext_resource type="Script" path="res://HUD/hud.gd" id="1_13wvf"]
 [ext_resource type="FontFile" uid="uid://c1rtvtnimcle0" path="res://assets/fonts/monogram.ttf" id="1_io1tw"]
@@ -9,8 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://c1ghl2u1vwgb3" path="res://assets/art/hud/Gameplay_buttons-4.png.png" id="7_irc30"]
 [ext_resource type="Texture2D" uid="uid://ciscain52rncq" path="res://assets/art/hud/Gameplay_buttons-1.png.png" id="8_d27mi"]
 [ext_resource type="Texture2D" uid="uid://b8ru1k5cki7lm" path="res://assets/art/hud/Gameplay_buttons-5.png.png" id="9_q4pdr"]
-[ext_resource type="Texture2D" uid="uid://csc12e63x36lu" path="res://assets/art/hud/Gameplay_buttons-3.png.png" id="10_8kmhv"]
-[ext_resource type="Texture2D" uid="uid://b2fludkr6mikx" path="res://assets/art/hud/Gameplay_buttons-6.png.png" id="11_rcw8h"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_13wvf")
@@ -220,33 +218,5 @@ scale = Vector2(2.5, 2.5)
 texture_normal = ExtResource("8_d27mi")
 texture_pressed = ExtResource("9_q4pdr")
 action = "move_right"
-
-[node name="Slow" type="TouchScreenButton" parent="."]
-position = Vector2(178, 592)
-scale = Vector2(2, 2)
-texture_normal = ExtResource("10_8kmhv")
-texture_pressed = ExtResource("11_rcw8h")
-
-[node name="SlowLabel" type="Label" parent="."]
-z_index = 1
-anchors_preset = -1
-anchor_left = 0.504
-anchor_top = 0.924
-anchor_right = 0.504
-anchor_bottom = 0.924
-offset_left = -63.92
-offset_top = -29.28
-offset_right = 64.08
-offset_bottom = 21.72
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_io1tw")
-theme_override_font_sizes/font_size = 48
-text = "SLOW"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]
