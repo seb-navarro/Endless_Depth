@@ -4,7 +4,6 @@ var fuel = 100
 var depth = 0
 var gameover
 
-signal restart
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -50,6 +49,11 @@ func _on_start_timer_timeout() -> void:
 	$DepthTimer.start()
 
 func game_over():
+	if depth > Global.high_score:
+		Global.save_score(depth)
+		Global.high_score = depth
+		$HUD/PersonalBest.show()
+	
 	$Spawner/EnemyTimer.stop()
 	$Spawner/ObstacleTimer.stop()
 	$FuelDeplete.stop()
@@ -95,5 +99,4 @@ func _on_fade_timer_timeout() -> void:
 
 
 func _on_transition_timer_timeout() -> void:
-	restart.emit()
 	get_tree().change_scene_to_file("res://Menu/Menu.tscn")

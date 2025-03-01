@@ -8,6 +8,7 @@ func _ready() -> void:
 	$Subamrine.play("subamrine_menu")
 	pressed = false
 	$Fade/ColorRect.visible = false
+	$PersonalBestTexture/PersonalBestValue.text = str(Global.high_score)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

@@ -40,3 +40,4 @@ func update_depth(depth):
 
 func _on_message_timer_timeout() -> void:
 	$Message.hide()
+	
