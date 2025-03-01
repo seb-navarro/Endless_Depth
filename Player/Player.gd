@@ -7,10 +7,16 @@ signal boost
 var down = 3000
 var velocity = Vector2.ZERO
 var finish = false
+var boosting = false
+var keep_boost = false
+var been_hit = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	finish = false
+	boosting = false
+	keep_boost = false
+	been_hit = false
 	$AnimatedSprite2D.animation = "submarine"
 
 
@@ -18,21 +24,31 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var player_size = Vector2(64, 64)
 	
+	if keep_boost == false:
+		boosting = false
+	
 	velocity.y = down * delta
 	
 	if finish == false:
 		if Input.is_action_pressed("move_right") and Input.is_action_pressed("move_left"):
 			velocity.y = down * delta * 4
-			$AnimatedSprite2D.speed_scale = 10
+			if been_hit == false:
+				$AnimatedSprite2D.speed_scale = 10
+			else:
+				$AnimatedSprite2D.speed_scale = 1
 			boost.emit()
+			boosting = true
 		elif Input.is_action_pressed("move_left"):
 			velocity.x -= speed
-			$AnimatedSprite2D.speed_scale = 1
+			if boosting == false:
+				$AnimatedSprite2D.speed_scale = 1
 		elif Input.is_action_pressed("move_right"):
 			velocity.x += speed
-			$AnimatedSprite2D.speed_scale = 1
+			if boosting == false:
+				$AnimatedSprite2D.speed_scale = 1
 		else:
-			$AnimatedSprite2D.speed_scale = 1
+			if boosting == false:
+				$AnimatedSprite2D.speed_scale = 1
 	else:
 		velocity.x = 0
 		$AnimatedSprite2D.speed_scale = 1
@@ -64,11 +80,17 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	collision_layer = 0
-	collision_mask = 0
-	hit.emit()
-	$AnimatedSprite2D.animation = "submarine_hit"
-	$HitTimer.start()
+	if finish == false:
+		collision_layer = 0
+		collision_mask = 0
+		hit.emit()
+		if boosting == false:
+			$AnimatedSprite2D.animation = "submarine_hit"
+			been_hit = true
+		else:
+			$AnimatedSprite2D.animation = "slow_hit"
+			keep_boost = true
+		$HitTimer.start()
 
 
 func start(pos):
@@ -77,9 +99,12 @@ func start(pos):
 
 
 func _on_hit_timer_timeout() -> void:
-	$AnimatedSprite2D.animation = "submarine"
-	collision_layer = 1
-	collision_mask = 1
+	if finish == false:
+		$AnimatedSprite2D.animation = "submarine"
+		collision_layer = 1
+		collision_mask = 1
+		keep_boost = false
+		been_hit = false
 	
 
 func over():
