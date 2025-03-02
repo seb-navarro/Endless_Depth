@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="EndlessDepth"
+config/name="Endless Depth"
 run/main_scene="res://Menu/Menu.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 boot_splash/show_image=false
