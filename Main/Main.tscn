@@ -78,7 +78,6 @@ wait_time = 0.5
 [node name="ParallaxBackground" parent="." instance=ExtResource("5_hywl2")]
 
 [node name="Fade" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="Fade"]
 modulate = Color(0, 0, 0, 1)
