@@ -10,9 +10,11 @@ config_version=5
 
 [application]
 
-config/name="endless depth"
+config/name="EndlessDepth"
 run/main_scene="res://Menu/Menu.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
+boot_splash/show_image=false
+config/icon="res://EndlessDepth_Icon.png"
 
 [autoload]
 
@@ -22,6 +24,7 @@ Global="*res://Global/global.gd"
 
 window/size/viewport_width=480
 window/size/viewport_height=720
+window/size/mode=3
 window/stretch/mode="canvas_items"
 window/handheld/orientation=1
 
