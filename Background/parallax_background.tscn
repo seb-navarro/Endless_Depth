@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2roys1sxfvi5"]
+[gd_scene load_steps=6 format=3 uid="uid://b2roys1sxfvi5"]
 
 [ext_resource type="Script" path="res://Background/parallax_background.gd" id="1_c7xsh"]
 [ext_resource type="Texture2D" uid="uid://yyqdpggpco8p" path="res://assets/art/environment/water background-1.png (1).png" id="1_tbxi6"]
-[ext_resource type="Texture2D" uid="uid://bpxpl6hyvebwj" path="res://assets/art/environment/Depth Flag-1.png.png" id="2_vnsyi"]
+[ext_resource type="Texture2D" uid="uid://hashxr4vpf5r" path="res://assets/art/environment/Water Parallax/water parallax-1.png.png" id="3_swyo2"]
+[ext_resource type="Texture2D" uid="uid://by27ardo7gicu" path="res://assets/art/environment/Water Parallax/water parallax-2.png.png" id="4_j4hl6"]
+[ext_resource type="Texture2D" uid="uid://cief7r4jhsj1d" path="res://assets/art/environment/Water Parallax/water parallax-3.png.png" id="5_w4dw8"]
 
 [node name="ParallaxBackground" type="ParallaxBackground"]
 script = ExtResource("1_c7xsh")
@@ -16,10 +18,75 @@ offset_bottom = 720.0
 texture = ExtResource("1_tbxi6")
 stretch_mode = 1
 
-[node name="Test" type="TextureRect" parent="ParallaxLayer"]
-offset_left = 80.0
-offset_top = 664.0
-offset_right = 160.0
-offset_bottom = 744.0
-texture = ExtResource("2_vnsyi")
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(0, 720)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxLayer2"]
+offset_left = 88.0
+offset_right = 152.0
+offset_bottom = 720.0
+texture = ExtResource("3_swyo2")
 stretch_mode = 1
+flip_h = true
+metadata/_edit_use_anchors_ = true
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(0, 720)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxLayer3"]
+offset_left = 132.0
+offset_right = 196.0
+offset_bottom = 720.0
+texture = ExtResource("4_j4hl6")
+stretch_mode = 1
+flip_h = true
+metadata/_edit_use_anchors_ = true
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(0, 720)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxLayer4"]
+offset_left = 184.0
+offset_right = 248.0
+offset_bottom = 720.0
+texture = ExtResource("5_w4dw8")
+stretch_mode = 1
+flip_h = true
+metadata/_edit_use_anchors_ = true
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(0, 720)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxLayer5"]
+offset_left = 328.0
+offset_right = 392.0
+offset_bottom = 720.0
+texture = ExtResource("3_swyo2")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(0, 720)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxLayer6"]
+offset_left = 285.0
+offset_right = 349.0
+offset_bottom = 720.0
+texture = ExtResource("4_j4hl6")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ParallaxLayer7" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(0, 720)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxLayer7"]
+offset_left = 232.0
+offset_right = 296.0
+offset_bottom = 720.0
+texture = ExtResource("5_w4dw8")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true

@@ -153,13 +153,13 @@ animations = [{
 }]
 
 [node name="Player" type="Area2D"]
-position = Vector2(240, 360)
+position = Vector2(240, 376)
 script = ExtResource("1_mxh4d")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ntpu6")
-animation = &"slow_hit"
+animation = &"sink"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-30, 12, -26, 12, -24, 12, -9, 22, 14, 22, 30, 11, 30, 4, 18, -4, 18, -24, 10, -24, 10, -6, -10, -6, -24, 4, -26, 4, -30, 4)
