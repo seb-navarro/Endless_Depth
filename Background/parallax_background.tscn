@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://Background/parallax_background.gd" id="1_c7xsh"]
 [ext_resource type="Texture2D" uid="uid://yyqdpggpco8p" path="res://assets/art/environment/water background-1.png (1).png" id="1_tbxi6"]
-[ext_resource type="Texture2D" uid="uid://hashxr4vpf5r" path="res://assets/art/environment/Water Parallax/water parallax-1.png.png" id="3_swyo2"]
-[ext_resource type="Texture2D" uid="uid://by27ardo7gicu" path="res://assets/art/environment/Water Parallax/water parallax-2.png.png" id="4_j4hl6"]
-[ext_resource type="Texture2D" uid="uid://cief7r4jhsj1d" path="res://assets/art/environment/Water Parallax/water parallax-3.png.png" id="5_w4dw8"]
+[ext_resource type="Texture2D" uid="uid://d0lobd0jkqsqb" path="res://assets/art/environment/Water Parallax/water parallax-1.png.png" id="3_swyo2"]
+[ext_resource type="Texture2D" uid="uid://cn8wnar2dylcn" path="res://assets/art/environment/Water Parallax/water parallax-2.png.png" id="4_j4hl6"]
+[ext_resource type="Texture2D" uid="uid://dtfhda80lfpkn" path="res://assets/art/environment/Water Parallax/water parallax-3.png.png" id="5_w4dw8"]
 
 [node name="ParallaxBackground" type="ParallaxBackground"]
 script = ExtResource("1_c7xsh")
