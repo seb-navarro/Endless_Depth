@@ -24,7 +24,7 @@ func _ready() -> void:
 	$RefuelStation.position.x = screen_width - refuel_station_size.x / 2
 	$Submarine.position.y = screen_height / 2 + submarine_size.y / 2
 	$Submarine.position.x = 0 - submarine_size.x 
-	$Submarine.animation = "submarine"
+	$Submarine.play("submarine")
 	transition_in()
 
 
@@ -53,7 +53,7 @@ func _process(delta: float) -> void:
 func _on_refuel_timer_timeout() -> void:
 	$FillUpTimer.stop()
 	movement = -100
-	$Submarine.animation = "exit"
+	$Submarine.play("exit")
 	full = true
 
 
