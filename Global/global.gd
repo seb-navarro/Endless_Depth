@@ -2,6 +2,8 @@ extends Node
 
 var screen_height
 var screen_width
+var run_fuel
+var run_depth
 var high_score
 const save_path = "user://player_high_score.save"
 
@@ -10,6 +12,8 @@ const save_path = "user://player_high_score.save"
 func _ready() -> void:
 	screen_width = get_viewport().get_visible_rect().size.x
 	screen_height = get_viewport().get_visible_rect().size.y
+	run_fuel = 100
+	run_depth = 0
 	load_score()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

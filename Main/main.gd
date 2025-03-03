@@ -1,12 +1,15 @@
 extends Node
 
-var fuel = 100
-var depth = 0
+var fuel = Global.run_fuel
+var depth = Global.run_depth
 var gameover
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	fuel = Global.run_fuel
+	depth = Global.run_depth
+	
 	$Player.position.x = Global.screen_width / 2
 	$Player.position.y = Global.screen_height / 2
 	gameover = false

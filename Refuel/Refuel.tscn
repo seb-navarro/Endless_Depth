@@ -1,0 +1,162 @@
+[gd_scene load_steps=34 format=3 uid="uid://12g4g7ejqicn"]
+
+[ext_resource type="Script" path="res://Refuel/refuel.gd" id="1_nh7bu"]
+[ext_resource type="PackedScene" uid="uid://b2roys1sxfvi5" path="res://Background/parallax_background.tscn" id="1_o0e8f"]
+[ext_resource type="PackedScene" uid="uid://bw0ocppp3257y" path="res://HUD/hud.tscn" id="2_5r05x"]
+[ext_resource type="Texture2D" uid="uid://baawps48mpwtc" path="res://assets/art/environment/Fuel Station-1.png.png" id="4_ofxr2"]
+[ext_resource type="Texture2D" uid="uid://cypp1sy3t8esr" path="res://assets/art/player/Submarine (Right) - Endless Depth/submarine_right_00.png" id="5_onwvp"]
+[ext_resource type="Texture2D" uid="uid://dfquvgrp5cer2" path="res://assets/art/player/Submarine (Left)  - Endless Depth/submarine_left_00.png" id="5_syf8m"]
+[ext_resource type="Texture2D" uid="uid://bhqlx0jj5xikj" path="res://assets/art/player/Submarine (Right) - Endless Depth/submarine_right_01.png" id="6_8luir"]
+[ext_resource type="Texture2D" uid="uid://bxikl5n5vbnnm" path="res://assets/art/player/Submarine (Left)  - Endless Depth/submarine_left_01.png" id="6_18d74"]
+[ext_resource type="Texture2D" uid="uid://bv32ybts3lco" path="res://assets/art/player/Submarine (Right) - Endless Depth/submarine_right_02.png" id="7_lvyf6"]
+[ext_resource type="Texture2D" uid="uid://dsatv5qlf103p" path="res://assets/art/player/Submarine (Left)  - Endless Depth/submarine_left_02.png" id="7_x5jg7"]
+[ext_resource type="Texture2D" uid="uid://b5baanl8ry331" path="res://assets/art/player/Submarine (Left)  - Endless Depth/submarine_left_03.png" id="8_qp15a"]
+[ext_resource type="Texture2D" uid="uid://mfuc0f8f5jdk" path="res://assets/art/player/Submarine (Right) - Endless Depth/submarine_right_03.png" id="8_u5but"]
+[ext_resource type="Texture2D" uid="uid://c521g7sb36ona" path="res://assets/art/player/Submarine (Right) - Endless Depth/submarine_right_04.png" id="9_4dyyg"]
+[ext_resource type="Texture2D" uid="uid://2pr4ncet5334" path="res://assets/art/player/Submarine (Left)  - Endless Depth/submarine_left_04.png" id="9_k1wqq"]
+[ext_resource type="Texture2D" uid="uid://ba6jfr0cxgv73" path="res://assets/art/player/Submarine (Right) - Endless Depth/submarine_right_05.png" id="10_d3bht"]
+[ext_resource type="Texture2D" uid="uid://bv6q8wipsptvp" path="res://assets/art/player/Submarine (Left)  - Endless Depth/submarine_left_05.png" id="10_n71pv"]
+[ext_resource type="Texture2D" uid="uid://cqnpp27v8lt17" path="res://assets/art/player/Submarine (Left)  - Endless Depth/submarine_left_06.png" id="11_lwp4n"]
+[ext_resource type="Texture2D" uid="uid://dwlhcstfu7sgv" path="res://assets/art/player/Submarine (Right) - Endless Depth/submarine_right_06.png" id="11_mul1f"]
+[ext_resource type="Texture2D" uid="uid://g1fo40ubxspt" path="res://assets/art/player/Submarine (Right) - Endless Depth/submarine_right_07.png" id="12_1eu1l"]
+[ext_resource type="Texture2D" uid="uid://cnknstbu8j74h" path="res://assets/art/player/Submarine (Left)  - Endless Depth/submarine_left_07.png" id="12_d3gdv"]
+[ext_resource type="Texture2D" uid="uid://dl5o1lkyw53ka" path="res://assets/art/player/Submarine (Left)  - Endless Depth/submarine_left_08.png" id="13_2x0vk"]
+[ext_resource type="Texture2D" uid="uid://dxh1p0xcka8kt" path="res://assets/art/player/Submarine (Right) - Endless Depth/submarine_right_08.png" id="13_tn11g"]
+[ext_resource type="Texture2D" uid="uid://cr2kfxbptxovf" path="res://assets/art/player/Submarine (Right) - Endless Depth/submarine_right_09.png" id="14_60sch"]
+[ext_resource type="Texture2D" uid="uid://d3t6icg4hc76h" path="res://assets/art/player/Submarine (Left)  - Endless Depth/submarine_left_09.png" id="14_w6urb"]
+[ext_resource type="Texture2D" uid="uid://6mmoa81auk32" path="res://assets/art/player/Submarine (Left)  - Endless Depth/submarine_left_10.png" id="15_kw6ag"]
+[ext_resource type="Texture2D" uid="uid://dd36hl16cm0wr" path="res://assets/art/player/Submarine (Right) - Endless Depth/submarine_right_10.png" id="15_upxil"]
+[ext_resource type="Texture2D" uid="uid://dh1rqu6kvrjil" path="res://assets/art/player/Submarine (Left)  - Endless Depth/submarine_left_11.png" id="16_6alfe"]
+[ext_resource type="Texture2D" uid="uid://60q1qy72810e" path="res://assets/art/player/Submarine (Right) - Endless Depth/submarine_right_11.png" id="16_etfl8"]
+[ext_resource type="Texture2D" uid="uid://cph7gbuxm68ni" path="res://assets/art/player/Submarine (Right) - Endless Depth/submarine_right_12.png" id="17_3xgud"]
+[ext_resource type="Texture2D" uid="uid://dmcen512kmne6" path="res://assets/art/player/Submarine (Left)  - Endless Depth/submarine_left_12.png" id="17_td4om"]
+[ext_resource type="Texture2D" uid="uid://b0r2crdj2lmmd" path="res://assets/art/player/Submarine (Right) - Endless Depth/submarine_right_13.png" id="18_gp5fh"]
+[ext_resource type="Texture2D" uid="uid://dst5dcjjphtkr" path="res://assets/art/player/Submarine (Left)  - Endless Depth/submarine_left_13.png" id="18_soqst"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q254i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_syf8m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_18d74")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_x5jg7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_qp15a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_k1wqq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_n71pv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_lwp4n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_d3gdv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_2x0vk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_w6urb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_kw6ag")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_6alfe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_td4om")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_soqst")
+}],
+"loop": true,
+"name": &"exit",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_onwvp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8luir")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_lvyf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_u5but")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_4dyyg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_d3bht")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_mul1f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_1eu1l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_tn11g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_60sch")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_upxil")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_etfl8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_3xgud")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_gp5fh")
+}],
+"loop": true,
+"name": &"submarine",
+"speed": 12.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"submarine_still",
+"speed": 5.0
+}]
+
+[node name="Refuel" type="Node"]
+script = ExtResource("1_nh7bu")
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("1_o0e8f")]
+
+[node name="HUD" parent="." instance=ExtResource("2_5r05x")]
+
+[node name="RefuelStation" type="Sprite2D" parent="."]
+position = Vector2(380, 320)
+texture = ExtResource("4_ofxr2")
+
+[node name="Submarine" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 352)
+sprite_frames = SubResource("SpriteFrames_q254i")
+animation = &"exit"
+
+[node name="RefuelTimer" type="Timer" parent="."]
+wait_time = 11.0
+one_shot = true
+
+[node name="FillUpTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="timeout" from="RefuelTimer" to="." method="_on_refuel_timer_timeout"]
+[connection signal="timeout" from="FillUpTimer" to="." method="_on_fill_up_timer_timeout"]

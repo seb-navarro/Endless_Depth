@@ -1,6 +1,5 @@
 extends CanvasLayer
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Message.hide()
@@ -30,7 +29,7 @@ func show_game_over():
 
 
 func show_refuelling():
-	show_message("Refuelling...", 15)
+	show_message("Refuelling...", 11)
 
 
 
@@ -40,4 +39,3 @@ func update_depth(depth):
 
 func _on_message_timer_timeout() -> void:
 	$Message.hide()
-	
