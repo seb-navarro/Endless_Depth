@@ -13,6 +13,8 @@ var been_hit = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	down = 3000
+	velocity = Vector2.ZERO
 	finish = false
 	boosting = false
 	keep_boost = false

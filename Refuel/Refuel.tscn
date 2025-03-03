@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://12g4g7ejqicn"]
+[gd_scene load_steps=38 format=3 uid="uid://12g4g7ejqicn"]
 
 [ext_resource type="Script" path="res://Refuel/refuel.gd" id="1_nh7bu"]
 [ext_resource type="PackedScene" uid="uid://b2roys1sxfvi5" path="res://Background/parallax_background.tscn" id="1_o0e8f"]
@@ -129,11 +129,66 @@ animations = [{
 "name": &"submarine",
 "speed": 12.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_onwvp")
+}],
 "loop": true,
 "name": &"submarine_still",
-"speed": 5.0
+"speed": 12.0
 }]
+
+[sub_resource type="Animation" id="Animation_5w61h"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3hwpl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qicmm"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333334, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a0n6q"]
+_data = {
+"RESET": SubResource("Animation_3hwpl"),
+"fade_in": SubResource("Animation_5w61h"),
+"fade_out": SubResource("Animation_qicmm")
+}
 
 [node name="Refuel" type="Node"]
 script = ExtResource("1_nh7bu")
@@ -149,7 +204,7 @@ texture = ExtResource("4_ofxr2")
 [node name="Submarine" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 352)
 sprite_frames = SubResource("SpriteFrames_q254i")
-animation = &"exit"
+animation = &"submarine_still"
 
 [node name="RefuelTimer" type="Timer" parent="."]
 wait_time = 11.0
@@ -158,5 +213,23 @@ one_shot = true
 [node name="FillUpTimer" type="Timer" parent="."]
 wait_time = 0.1
 
+[node name="Fade" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Fade"]
+modulate = Color(0, 0, 0, 1)
+offset_right = 480.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Fade"]
+libraries = {
+"": SubResource("AnimationLibrary_a0n6q")
+}
+
+[node name="FadeTimer" type="Timer" parent="Fade"]
+
+[node name="TransitionTimer" type="Timer" parent="Fade"]
+
 [connection signal="timeout" from="RefuelTimer" to="." method="_on_refuel_timer_timeout"]
 [connection signal="timeout" from="FillUpTimer" to="." method="_on_fill_up_timer_timeout"]
+[connection signal="timeout" from="Fade/TransitionTimer" to="." method="_on_transition_timer_timeout"]

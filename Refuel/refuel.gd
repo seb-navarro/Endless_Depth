@@ -7,11 +7,15 @@ const submarine_size = Vector2(64, 64)
 var submarine_limit = screen_width - refuel_station_size.x
 var movement = 200
 var loop = false
-var fuel = 10
+var fuel = 40
 var depth = 250
+var full = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	full = false
+	loop = false
+	$Fade/ColorRect.visible = true
 	$HUD/FuelGauge.value = fuel
 	$HUD/Left.hide()
 	$HUD/Right.hide()
@@ -21,6 +25,7 @@ func _ready() -> void:
 	$Submarine.position.y = screen_height / 2 + submarine_size.y / 2
 	$Submarine.position.x = 0 - submarine_size.x 
 	$Submarine.animation = "submarine"
+	transition_in()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -38,12 +43,18 @@ func _process(delta: float) -> void:
 		$FillUpTimer.start()
 		loop = false
 		submarine_limit += 100
+	
+	if full == true:
+		if $Submarine.position.x <= 0 - submarine_size.x / 2:
+			transition_out()
+			full = false
 
 
 func _on_refuel_timer_timeout() -> void:
 	$FillUpTimer.stop()
 	movement = -100
 	$Submarine.animation = "exit"
+	full = true
 
 
 func _on_fill_up_timer_timeout() -> void:
@@ -54,3 +65,17 @@ func _on_fill_up_timer_timeout() -> void:
 		$FillUpTimer.stop()
 		$RefuelTimer.start(1)
 		$HUD.show_message("Refuelling...", 1)
+
+
+func transition_in():
+	$Fade/ColorRect.visible = true
+	$Fade/AnimationPlayer.play("fade_in")
+
+func transition_out():
+	$Fade/TransitionTimer.start()
+	$Fade/ColorRect.visible = true
+	$Fade/AnimationPlayer.play("fade_out")
+
+
+func _on_transition_timer_timeout() -> void:
+	get_tree().change_scene_to_file("res://Main/Main.tscn")

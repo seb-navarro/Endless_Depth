@@ -94,6 +94,9 @@ func transition_out():
 	$Fade/AnimationPlayer.play("fade_out")
 	
 	
+func refuel():
+	pass
+
 
 
 func _on_fade_timer_timeout() -> void:
