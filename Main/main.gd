@@ -35,7 +35,6 @@ func _process(delta: float) -> void:
 	if loop == true:
 		if check == 0:
 			loop = false
-			print(depth)
 			refuel()
 	
 	if exit == true:
@@ -91,7 +90,6 @@ func game_over():
 
 func _on_depth_timer_timeout() -> void:
 	check = depth % 250
-	print(check)
 	if check != 0:
 		depth += 1
 		$HUD.update_depth(depth)

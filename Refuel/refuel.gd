@@ -64,7 +64,6 @@ func _on_fill_up_timer_timeout() -> void:
 	if fuel < 100:
 		fuel += 1
 	else:
-		print("test")
 		$FillUpTimer.stop()
 		$RefuelTimer.start(1)
 		$HUD.show_message("Refuelling...", 1)
