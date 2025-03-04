@@ -1,25 +1,27 @@
 extends Node
 
-var fuel = Global.run_fuel
-var depth = Global.run_depth
+var fuel
+var depth
 var gameover
 var loop = true
-
+var exit = true 
+var check
 signal checkpoint
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	fuel = Global.run_fuel
-	depth = Global.run_depth
-	
+	depth = Global.run_depth + 1
+	exit = true
 	loop = true
 	$Player.position.x = Global.screen_width / 2
 	$Player.position.y = Global.screen_height / 2
 	gameover = false
 	$Fade/ColorRect.visible = true
 	transition_in()
-	new_game()
+	$StartTimer.start()
 	$Spawner.position = $Player.position
+	$HUD.update_depth(depth)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -31,10 +33,16 @@ func _process(delta: float) -> void:
 			game_over()
 			
 	if loop == true:
-		if depth / 250 == 1:
+		if check == 0:
 			loop = false
-			print("First")
+			print(depth)
 			refuel()
+	
+	if exit == true:
+		if $Player.position.x >= Global.screen_width + $Player.player_size.x / 2:
+			transition_out()
+			$Fade/TransitionTimer.start()
+			exit = false
 	
 	$HUD/FuelGauge.value = fuel
 	
@@ -44,10 +52,6 @@ func _process(delta: float) -> void:
 
 func _on_player_hit() -> void:
 	fuel -= 10
-
-func new_game():
-	fuel = 100
-	$StartTimer.start()
 
 
 func _on_fuel_deplete_timeout() -> void:
@@ -86,8 +90,13 @@ func game_over():
 
 
 func _on_depth_timer_timeout() -> void:
-	depth += 1
-	$HUD.update_depth(depth)
+	check = depth % 250
+	print(check)
+	if check != 0:
+		depth += 1
+		$HUD.update_depth(depth)
+	else:
+		$Player.down = 0
 
 
 func _on_player_boost() -> void:
@@ -106,6 +115,8 @@ func transition_out():
 func refuel():
 	$DepthTimer.stop()
 	$FuelDeplete.stop()
+	Global.run_depth = depth
+	Global.run_fuel = fuel
 	checkpoint.emit()
 
 
@@ -115,7 +126,7 @@ func _on_fade_timer_timeout() -> void:
 
 
 func _on_transition_timer_timeout() -> void:
-	get_tree().change_scene_to_file("res://Menu/Menu.tscn")
-
-
-	
+	if $Player.position.x >= Global.screen_width + $Player.player_size.x / 2:
+		get_tree().change_scene_to_file("res://Refuel/Refuel.tscn")
+	else:
+		get_tree().change_scene_to_file("res://Menu/Menu.tscn")

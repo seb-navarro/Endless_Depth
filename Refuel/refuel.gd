@@ -1,18 +1,20 @@
 extends Node
 
-var screen_width = 480
-var screen_height = 720
+var screen_width = Global.screen_width
+var screen_height = Global.screen_height
 const refuel_station_size = Vector2(200, 200)
 const submarine_size = Vector2(64, 64)
 var submarine_limit = screen_width - refuel_station_size.x
 var movement = 200
 var loop = false
-var fuel = 40
-var depth = 250
+var fuel
+var depth
 var full = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	fuel = Global.run_fuel
+	depth  = Global.run_depth
 	full = false
 	loop = false
 	$Fade/ColorRect.visible = true
@@ -55,6 +57,7 @@ func _on_refuel_timer_timeout() -> void:
 	movement = -100
 	$Submarine.play("exit")
 	full = true
+	Global.run_fuel = 100
 
 
 func _on_fill_up_timer_timeout() -> void:

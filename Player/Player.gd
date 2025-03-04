@@ -13,6 +13,7 @@ var been_hit = false
 var refuel = false
 var wait = false
 var timer = false
+const player_size = Vector2(64, 64)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -30,7 +31,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var player_size = Vector2(64, 64)
+	const player_size = Vector2(64, 64)
 	
 	if keep_boost == false:
 		boosting = false
@@ -66,8 +67,11 @@ func _process(delta: float) -> void:
 		collision_mask = 0
 	else:
 		if timer == false:
+			velocity.x = 0
 			$WaitTimer.start()
 			timer = true
+		collision_layer = 0
+		collision_mask = 0
 		$AnimatedSprite2D.speed_scale = 1
 		down = 0
 		if wait == true:
