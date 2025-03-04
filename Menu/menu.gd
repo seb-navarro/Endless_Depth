@@ -18,6 +18,7 @@ func _process(delta: float) -> void:
 
 
 func _on_menu_timer_timeout() -> void:
+	Global.previous_scene = "menu"
 	get_tree().change_scene_to_file("res://Main/Main.tscn")
 
 

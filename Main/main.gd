@@ -10,6 +10,12 @@ signal checkpoint
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if Global.previous_scene == "refuel":
+		Global.difficulty = Global.difficulty * 0.75
+	
+	print(Global.difficulty)
+	$Spawner/EnemyTimer.wait_time = Global.difficulty
+	$Spawner/ObstacleTimer.wait_time = Global.difficulty
 	fuel = Global.run_fuel
 	depth = Global.run_depth + 1
 	exit = true
@@ -89,7 +95,7 @@ func game_over():
 
 
 func _on_depth_timer_timeout() -> void:
-	check = depth % 250
+	check = depth % 200
 	if check != 0:
 		depth += 1
 		$HUD.update_depth(depth)
@@ -125,6 +131,8 @@ func _on_fade_timer_timeout() -> void:
 
 func _on_transition_timer_timeout() -> void:
 	if $Player.position.x >= Global.screen_width + $Player.player_size.x / 2:
+		Global.previous_scene = "gameplay"
 		get_tree().change_scene_to_file("res://Refuel/Refuel.tscn")
 	else:
+		Global.previous_scene = "gameplay"
 		get_tree().change_scene_to_file("res://Menu/Menu.tscn")

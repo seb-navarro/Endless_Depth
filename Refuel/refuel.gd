@@ -80,4 +80,5 @@ func transition_out():
 
 
 func _on_transition_timer_timeout() -> void:
+	Global.previous_scene = "refuel"
 	get_tree().change_scene_to_file("res://Main/Main.tscn")

@@ -5,6 +5,8 @@ var screen_width
 var run_fuel
 var run_depth
 var high_score
+var previous_scene
+var difficulty = 1.0
 const save_path = "user://player_high_score.save"
 
 
