@@ -10,6 +10,9 @@ var finish = false
 var boosting = false
 var keep_boost = false
 var been_hit = false
+var refuel = false
+var wait = false
+var timer = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -19,6 +22,9 @@ func _ready() -> void:
 	boosting = false
 	keep_boost = false
 	been_hit = false
+	refuel = false
+	wait = false
+	timer = false
 	$AnimatedSprite2D.animation = "submarine"
 
 
@@ -31,7 +37,7 @@ func _process(delta: float) -> void:
 	
 	velocity.y = down * delta
 	
-	if finish == false:
+	if finish == false and refuel == false:
 		if Input.is_action_pressed("move_right") and Input.is_action_pressed("move_left"):
 			velocity.y = down * delta * 4
 			if been_hit == false:
@@ -51,13 +57,22 @@ func _process(delta: float) -> void:
 		else:
 			if boosting == false:
 				$AnimatedSprite2D.speed_scale = 1
-	else:
+	elif finish == true:
 		velocity.x = 0
 		$AnimatedSprite2D.speed_scale = 1
 		$AnimatedSprite2D.animation = "sink"
 		velocity.y = down * delta * 2
 		collision_layer = 0
 		collision_mask = 0
+	else:
+		if timer == false:
+			$WaitTimer.start()
+			timer = true
+		$AnimatedSprite2D.speed_scale = 1
+		down = 0
+		if wait == true:
+			velocity.x += speed
+		
 	
 	
 	$AnimatedSprite2D.play()
@@ -71,11 +86,11 @@ func _process(delta: float) -> void:
 	#	position.x = Global.screen_width + player_size.x / 2
 	#elif position.x > Global.screen_width + player_size.x / 2:
 	#	position.x = -player_size.x / 2
+	if refuel == false:
+		position.x = clamp(position.x, 0 + player_size.x / 2, Global.screen_width - player_size.x / 2)
 	
-	position.x = clamp(position.x, 0 + player_size.x / 2, Global.screen_width - player_size.x / 2)
-	
-	if position.x == 0 + player_size.x / 2 or position.x == Global.screen_width - player_size.x / 2:
-		velocity.x = 0
+		if position.x == 0 + player_size.x / 2 or position.x == Global.screen_width - player_size.x / 2:
+			velocity.x = 0
 	
 	if velocity.x != 0:
 		$AnimatedSprite2D.flip_h = velocity.x < 0
@@ -111,3 +126,12 @@ func _on_hit_timer_timeout() -> void:
 
 func over():
 	finish = true
+
+
+func _on_main_checkpoint() -> void:
+	refuel = true
+	
+
+
+func _on_wait_timer_timeout() -> void:
+	wait = true

@@ -3,13 +3,16 @@ extends Node
 var fuel = Global.run_fuel
 var depth = Global.run_depth
 var gameover
+var loop = true
 
+signal checkpoint
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	fuel = Global.run_fuel
 	depth = Global.run_depth
 	
+	loop = true
 	$Player.position.x = Global.screen_width / 2
 	$Player.position.y = Global.screen_height / 2
 	gameover = false
@@ -26,6 +29,12 @@ func _process(delta: float) -> void:
 	if gameover == false:
 		if fuel <= 0:
 			game_over()
+			
+	if loop == true:
+		if depth / 250 == 1:
+			loop = false
+			print("First")
+			refuel()
 	
 	$HUD/FuelGauge.value = fuel
 	
@@ -95,8 +104,9 @@ func transition_out():
 	
 	
 func refuel():
-	pass
-
+	$DepthTimer.stop()
+	$FuelDeplete.stop()
+	checkpoint.emit()
 
 
 func _on_fade_timer_timeout() -> void:
@@ -106,3 +116,6 @@ func _on_fade_timer_timeout() -> void:
 
 func _on_transition_timer_timeout() -> void:
 	get_tree().change_scene_to_file("res://Menu/Menu.tscn")
+
+
+	

@@ -105,6 +105,7 @@ one_shot = true
 [node name="Spawner" parent="." instance=ExtResource("5_mluvq")]
 position = Vector2(240, 360)
 
+[connection signal="checkpoint" from="." to="Player" method="_on_main_checkpoint"]
 [connection signal="boost" from="Player" to="." method="_on_player_boost"]
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="timeout" from="FuelDeplete" to="." method="_on_fuel_deplete_timeout"]
