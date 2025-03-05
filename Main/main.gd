@@ -17,7 +17,6 @@ func _ready() -> void:
 		Global.run_depth = 0
 		Global.difficulty = 1
 	
-	print(Global.difficulty)
 	$Spawner/EnemyTimer.wait_time = Global.difficulty
 	$Spawner/ObstacleTimer.wait_time = Global.difficulty
 	fuel = Global.run_fuel
