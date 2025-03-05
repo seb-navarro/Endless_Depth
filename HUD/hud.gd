@@ -22,7 +22,7 @@ func show_message(text, time, colour):
 	$MessageTimer.start()
 	
 func show_game_over():
-	show_message("GAME OVER", 10, "ea4800")
+	show_message("GAME OVER", 10, "#ea4800")
 	$DepthReached.show()
 	$DepthReachedValue.text = $DepthCounter.text
 	$DepthReachedValue.show()

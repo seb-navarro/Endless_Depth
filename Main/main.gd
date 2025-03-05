@@ -104,7 +104,7 @@ func _on_depth_timer_timeout() -> void:
 		depth += 1
 		$HUD.update_depth(depth)
 	else:
-		$HUD.show_message("REFUEL STATION ->", 5, "#ffc900")
+		$HUD.show_message("REFUEL STATION ->", 10, "#ffc900")
 		$Player.down = 0
 
 
