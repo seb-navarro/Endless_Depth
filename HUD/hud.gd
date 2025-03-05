@@ -14,22 +14,19 @@ func _process(delta: float) -> void:
 	pass
 
 
-func show_message(text, time):
+func show_message(text, time, colour):
 	$Message.text = text
+	$Message.add_theme_color_override("font_color", Color(colour))
 	$Message.show()
 	$MessageTimer.wait_time = time
 	$MessageTimer.start()
 	
 func show_game_over():
-	show_message("Game Over", 10)
+	show_message("GAME OVER", 10, "ea4800")
 	$DepthReached.show()
 	$DepthReachedValue.text = $DepthCounter.text
 	$DepthReachedValue.show()
 	$MetersReached.show()
-
-
-func show_refuelling():
-	show_message("Refuelling...", 11)
 
 
 

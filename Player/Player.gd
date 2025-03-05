@@ -76,20 +76,11 @@ func _process(delta: float) -> void:
 		down = 0
 		if wait == true:
 			velocity.x += speed
-		
-	
 	
 	$AnimatedSprite2D.play()
 	
 	position += velocity * delta
 	
-	#Code below implements player traversing horizontaly offscreen
-	#
-	#
-	#if position.x < -player_size.x / 2:
-	#	position.x = Global.screen_width + player_size.x / 2
-	#elif position.x > Global.screen_width + player_size.x / 2:
-	#	position.x = -player_size.x / 2
 	if refuel == false:
 		position.x = clamp(position.x, 0 + player_size.x / 2, Global.screen_width - player_size.x / 2)
 	

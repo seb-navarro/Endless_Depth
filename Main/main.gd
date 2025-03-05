@@ -6,6 +6,7 @@ var gameover
 var loop = true
 var exit = true 
 var check
+
 signal checkpoint
 
 # Called when the node enters the scene tree for the first time.
@@ -103,6 +104,7 @@ func _on_depth_timer_timeout() -> void:
 		depth += 1
 		$HUD.update_depth(depth)
 	else:
+		$HUD.show_message("REFUEL STATION ->", 5, "#ffc900")
 		$Player.down = 0
 
 
