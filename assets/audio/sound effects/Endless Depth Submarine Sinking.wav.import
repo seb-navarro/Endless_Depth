@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cvo7vqt274iq6"
+path="res://.godot/imported/Endless Depth Submarine Sinking.wav-ddc458a32a0a6001ed22d9ab862d394a.sample"
+
+[deps]
+
+source_file="res://assets/audio/sound effects/Endless Depth Submarine Sinking.wav"
+dest_files=["res://.godot/imported/Endless Depth Submarine Sinking.wav-ddc458a32a0a6001ed22d9ab862d394a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
