@@ -63,7 +63,6 @@ func _process(delta: float) -> void:
 func _on_player_hit() -> void:
 	fuel -= 10
 	$HitSound.play()
-	Input.vibrate_handheld(100)
 
 
 func _on_fuel_deplete_timeout() -> void:
@@ -112,6 +111,7 @@ func _on_depth_timer_timeout() -> void:
 		$RefuelSound.play()
 		$HUD.show_message("REFUEL STATION ->", 10, "#ffc900")
 		$Player.down = 0
+		Input.vibrate_handheld(100)
 
 
 func _on_player_boost() -> void:

@@ -68,6 +68,7 @@ func _on_fill_up_timer_timeout() -> void:
 		$RefuelTimer.start(1)
 		$HUD.show_message("REFUELLING...", 1, "#00ff00")
 		$FinishedSound.play()
+		Input.vibrate_handheld(100)
 
 
 func transition_in():
