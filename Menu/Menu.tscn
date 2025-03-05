@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://blt4en04tvu33"]
+[gd_scene load_steps=31 format=3 uid="uid://blt4en04tvu33"]
 
 [ext_resource type="Texture2D" uid="uid://n3umsrt60goi" path="res://assets/art/environment/sky-1.png.png" id="1_85li0"]
 [ext_resource type="Script" path="res://Menu/menu.gd" id="1_qj7eo"]
@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://60q1qy72810e" path="res://assets/art/player/Submarine (Right) - Endless Depth/submarine_right_11.png" id="22_xr3gr"]
 [ext_resource type="Texture2D" uid="uid://cph7gbuxm68ni" path="res://assets/art/player/Submarine (Right) - Endless Depth/submarine_right_12.png" id="23_28qiq"]
 [ext_resource type="Texture2D" uid="uid://b0r2crdj2lmmd" path="res://assets/art/player/Submarine (Right) - Endless Depth/submarine_right_13.png" id="24_njhgv"]
+[ext_resource type="AudioStream" uid="uid://csw1rfnibn667" path="res://assets/audio/sound effects/Endless Depth Button Pressed.wav" id="25_yq820"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3f7tx"]
 animations = [{
@@ -353,6 +354,9 @@ one_shot = true
 [node name="FadeTimer" type="Timer" parent="Fade"]
 wait_time = 2.0
 one_shot = true
+
+[node name="PressedSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("25_yq820")
 
 [connection signal="released" from="StartButton" to="." method="_on_start_button_released"]
 [connection signal="timeout" from="Fade/TransitionTimer" to="." method="_on_menu_timer_timeout"]

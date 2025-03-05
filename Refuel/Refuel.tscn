@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://12g4g7ejqicn"]
+[gd_scene load_steps=39 format=3 uid="uid://12g4g7ejqicn"]
 
 [ext_resource type="Script" path="res://Refuel/refuel.gd" id="1_nh7bu"]
 [ext_resource type="PackedScene" uid="uid://b2roys1sxfvi5" path="res://Background/parallax_background.tscn" id="1_o0e8f"]
@@ -32,6 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://dmcen512kmne6" path="res://assets/art/player/Submarine (Left)  - Endless Depth/submarine_left_12.png" id="17_td4om"]
 [ext_resource type="Texture2D" uid="uid://b0r2crdj2lmmd" path="res://assets/art/player/Submarine (Right) - Endless Depth/submarine_right_13.png" id="18_gp5fh"]
 [ext_resource type="Texture2D" uid="uid://dst5dcjjphtkr" path="res://assets/art/player/Submarine (Left)  - Endless Depth/submarine_left_13.png" id="18_soqst"]
+[ext_resource type="AudioStream" uid="uid://csw1rfnibn667" path="res://assets/audio/sound effects/Endless Depth Button Pressed.wav" id="33_u3v1q"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_q254i"]
 animations = [{
@@ -229,6 +230,9 @@ libraries = {
 [node name="FadeTimer" type="Timer" parent="Fade"]
 
 [node name="TransitionTimer" type="Timer" parent="Fade"]
+
+[node name="FinishedSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("33_u3v1q")
 
 [connection signal="timeout" from="RefuelTimer" to="." method="_on_refuel_timer_timeout"]
 [connection signal="timeout" from="FillUpTimer" to="." method="_on_fill_up_timer_timeout"]

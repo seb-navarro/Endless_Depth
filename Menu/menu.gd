@@ -5,6 +5,7 @@ var movement = 200
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	BackgroundMusic.play()
 	$Subamrine.play("subamrine_menu")
 	pressed = false
 	$Fade/ColorRect.visible = false
@@ -26,6 +27,8 @@ func _on_start_button_released() -> void:
 	$Fade/FadeTimer.start()
 	pressed = true
 	$StartButton.visible = false
+	$PressedSound.play()
+	BackgroundMusic.stop()
 
 func transition_out():
 	$Fade/ColorRect.visible = true

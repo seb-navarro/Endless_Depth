@@ -19,6 +19,7 @@ config/icon="res://EndlessDepth_Icon.png"
 [autoload]
 
 Global="*res://Global/global.gd"
+BackgroundMusic="*res://Global/background_music.tscn"
 
 [display]
 

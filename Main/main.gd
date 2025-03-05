@@ -14,6 +14,7 @@ func _ready() -> void:
 	if Global.previous_scene == "refuel":
 		Global.difficulty = Global.difficulty * 0.75
 	elif Global.previous_scene == "menu":
+		BackgroundMusic.play()
 		Global.run_fuel = 100
 		Global.run_depth = 0
 		Global.difficulty = 1
@@ -61,6 +62,7 @@ func _process(delta: float) -> void:
 
 func _on_player_hit() -> void:
 	fuel -= 10
+	$HitSound.play()
 
 
 func _on_fuel_deplete_timeout() -> void:
@@ -95,6 +97,8 @@ func game_over():
 	$Player/Camera2D.limit_bottom = $Player.position.y + $Player/Camera2D.get_viewport().get_visible_rect().size.y / 2
 	$Player.over()
 	$Fade/FadeTimer.start()
+	BackgroundMusic.stop()
+	$SinkSound.play()
 	gameover = true
 
 
@@ -104,6 +108,7 @@ func _on_depth_timer_timeout() -> void:
 		depth += 1
 		$HUD.update_depth(depth)
 	else:
+		$RefuelSound.play()
 		$HUD.show_message("REFUEL STATION ->", 10, "#ffc900")
 		$Player.down = 0
 
