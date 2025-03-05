@@ -12,6 +12,10 @@ signal checkpoint
 func _ready() -> void:
 	if Global.previous_scene == "refuel":
 		Global.difficulty = Global.difficulty * 0.75
+	elif Global.previous_scene == "menu":
+		Global.run_fuel = 100
+		Global.run_depth = 0
+		Global.difficulty = 1
 	
 	print(Global.difficulty)
 	$Spawner/EnemyTimer.wait_time = Global.difficulty
@@ -95,7 +99,7 @@ func game_over():
 
 
 func _on_depth_timer_timeout() -> void:
-	check = depth % 200
+	check = depth % 100
 	if check != 0:
 		depth += 1
 		$HUD.update_depth(depth)
@@ -105,7 +109,7 @@ func _on_depth_timer_timeout() -> void:
 
 func _on_player_boost() -> void:
 	$FuelDeplete.wait_time = $FuelDeplete.wait_time * 0.5
-	$DepthTimer.wait_time = $DepthTimer.wait_time * 0.25
+	$DepthTimer.wait_time = $DepthTimer.wait_time * 0.5
 
 func transition_in():
 	$Fade/ColorRect.visible = true

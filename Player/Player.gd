@@ -40,7 +40,7 @@ func _process(delta: float) -> void:
 	
 	if finish == false and refuel == false:
 		if Input.is_action_pressed("move_right") and Input.is_action_pressed("move_left"):
-			velocity.y = down * delta * 4
+			velocity.y = down * delta * 2
 			if been_hit == false:
 				$AnimatedSprite2D.speed_scale = 10
 			else:
