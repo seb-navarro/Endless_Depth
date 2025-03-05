@@ -14,8 +14,9 @@ func _process(delta: float) -> void:
 	pass
 
 
+# Spawns an enemy fish at a random location along the path specified.
+# The enemy has a random direction and velocity to keep gameplay engaging.
 func _on_enemy_timer_timeout() -> void:
-	
 	var enemy = enemy_scene.instantiate()
 	
 	var enemy_spawn_location = $EnemyPath/EnemySpawnLocation
@@ -39,7 +40,9 @@ func _on_enemy_timer_timeout() -> void:
 	add_child(enemy)
 	
 	
-
+# Spawns an obstacle at a random location along the path specified.
+# Random choice between a piece of metal and a rock.
+# Random rotation is applied.
 func _on_obstacle_timer_timeout() -> void:
 	var choice = randf()
 	var obstacle
