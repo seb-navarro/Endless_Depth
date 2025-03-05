@@ -63,6 +63,7 @@ func _process(delta: float) -> void:
 func _on_player_hit() -> void:
 	fuel -= 10
 	$HitSound.play()
+	Input.vibrate_handheld(100)
 
 
 func _on_fuel_deplete_timeout() -> void:

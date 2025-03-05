@@ -29,6 +29,7 @@ func _on_start_button_released() -> void:
 	$StartButton.visible = false
 	$PressedSound.play()
 	BackgroundMusic.stop()
+	Input.vibrate_handheld(500)
 
 func transition_out():
 	$Fade/ColorRect.visible = true
