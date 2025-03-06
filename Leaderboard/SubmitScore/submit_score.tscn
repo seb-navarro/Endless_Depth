@@ -1,0 +1,153 @@
+[gd_scene load_steps=7 format=3 uid="uid://catey6xyubjq8"]
+
+[ext_resource type="Texture2D" uid="uid://n3umsrt60goi" path="res://assets/art/environment/sky-1.png.png" id="1_hw047"]
+[ext_resource type="Script" path="res://Leaderboard/SubmitScore/submit_score.gd" id="1_px8ld"]
+[ext_resource type="FontFile" uid="uid://c1rtvtnimcle0" path="res://assets/fonts/monogram.ttf" id="2_tryts"]
+[ext_resource type="Texture2D" uid="uid://55x675rh1bib" path="res://assets/art/environment/Button-1.png.png" id="3_bq5lu"]
+[ext_resource type="Texture2D" uid="uid://bdlg3hto4mcmh" path="res://assets/art/environment/start-button-pressed.png" id="4_2pl2d"]
+[ext_resource type="AudioStream" uid="uid://csw1rfnibn667" path="res://assets/audio/sound effects/Endless Depth Button Pressed.wav" id="6_lwn20"]
+
+[node name="SubmitScore" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_px8ld")
+
+[node name="BlackBackground" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 480.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="TextureRect" parent="BlackBackground"]
+layout_mode = 0
+offset_top = 200.0
+offset_right = 480.0
+offset_bottom = 500.0
+texture = ExtResource("1_hw047")
+
+[node name="NicknameInput" type="LineEdit" parent="BlackBackground/ColorRect"]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 120.0
+offset_right = 320.0
+offset_bottom = 154.0
+theme_override_fonts/font = ExtResource("2_tryts")
+theme_override_font_sizes/font_size = 32
+placeholder_text = "NICKNAME"
+max_length = 3
+
+[node name="NicknameText" type="Label" parent="BlackBackground/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.073
+anchor_top = 0.093
+anchor_right = 0.923
+anchor_bottom = 0.277
+offset_left = -0.0400047
+offset_top = 0.0999985
+offset_right = -0.0400085
+offset_bottom = -0.100006
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_tryts")
+theme_override_font_sizes/font_size = 32
+text = "PLEASE ENTER A NICKNAME
+ (3 CHAR MAX) TO RECORD YOUR SCORE"
+horizontal_alignment = 1
+
+[node name="SubmitButtonDisabled" type="TouchScreenButton" parent="BlackBackground/ColorRect"]
+position = Vector2(176, 180)
+scale = Vector2(2.03125, 1.875)
+texture_normal = ExtResource("3_bq5lu")
+
+[node name="Label" type="Label" parent="BlackBackground/ColorRect/SubmitButtonDisabled"]
+anchors_preset = -1
+anchor_left = 0.125
+anchor_top = 0.366
+anchor_right = 0.906
+anchor_bottom = 0.647
+offset_top = 0.00457191
+offset_right = 0.0159988
+offset_bottom = 0.0205727
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_tryts")
+theme_override_font_sizes/font_size = 22
+text = "SUBMIT"
+
+[node name="SubmitButton" type="TouchScreenButton" parent="BlackBackground/ColorRect"]
+position = Vector2(176, 181)
+scale = Vector2(2.03125, 1.875)
+texture_normal = ExtResource("3_bq5lu")
+texture_pressed = ExtResource("4_2pl2d")
+
+[node name="Label" type="Label" parent="BlackBackground/ColorRect/SubmitButton"]
+anchors_preset = -1
+anchor_left = 0.125
+anchor_top = 0.366
+anchor_right = 0.906
+anchor_bottom = 0.647
+offset_top = 0.00457191
+offset_right = 0.0159988
+offset_bottom = 0.0205727
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_tryts")
+theme_override_font_sizes/font_size = 22
+text = "SUBMIT"
+
+[node name="ButtonSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_lwn20")
+
+[node name="WaitTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="SuccessMessage" type="ColorRect" parent="."]
+layout_mode = 0
+offset_top = 200.0
+offset_right = 480.0
+offset_bottom = 500.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="SuccessMessage"]
+layout_mode = 0
+offset_top = 100.0
+offset_right = 480.0
+offset_bottom = 164.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("2_tryts")
+theme_override_font_sizes/font_size = 55
+text = "HIGH SCORE SUBMITTED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FailedMessage" type="ColorRect" parent="."]
+layout_mode = 0
+offset_top = 148.0
+offset_right = 480.0
+offset_bottom = 548.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="FailedMessage"]
+layout_mode = 0
+offset_top = 18.0
+offset_right = 480.0
+offset_bottom = 344.0
+theme_override_colors/font_color = Color(0.917647, 0.282353, 0, 1)
+theme_override_fonts/font = ExtResource("2_tryts")
+theme_override_font_sizes/font_size = 55
+text = "*ERROR*
+FAILED TO CONNECT
+TO SERVER
+---
+HIGH SCORE IS SAVED
+AND WILL BE UPDATED
+WHEN CONNECTION IS
+RESTORED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="text_submitted" from="BlackBackground/ColorRect/NicknameInput" to="." method="_on_nickname_input_text_submitted"]
+[connection signal="released" from="BlackBackground/ColorRect/SubmitButton" to="." method="_on_submit_button_released"]
+[connection signal="timeout" from="WaitTimer" to="." method="_on_wait_timer_timeout"]

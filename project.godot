@@ -20,14 +20,19 @@ config/icon="res://EndlessDepth_Icon.png"
 
 Global="*res://Global/global.gd"
 BackgroundMusic="*res://Global/background_music.tscn"
+Leaderboards="*res://addons/quiver_leaderboards/leaderboards.tscn"
+PlayerAccounts="*res://addons/quiver_player_accounts/player_accounts.tscn"
 
 [display]
 
 window/size/viewport_width=480
 window/size/viewport_height=720
-window/size/mode=3
 window/stretch/mode="canvas_items"
 window/handheld/orientation=1
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/quiver_leaderboards/plugin.cfg", "res://addons/quiver_player_accounts/plugin.cfg")
 
 [input]
 
@@ -45,6 +50,10 @@ move_left={
 [input_devices]
 
 pointing/emulate_touch_from_mouse=true
+
+[quiver]
+
+general/auth_token="4oVyRrUpt3W1BJ0bgQeBBRCudL0GoyCDVaAL1fHE"
 
 [rendering]
 

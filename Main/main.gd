@@ -92,9 +92,8 @@ func _on_start_timer_timeout() -> void:
 # If a Personal best is achieved then that score is saved to the external file.
 func game_over():
 	if depth > Global.high_score:
-		Global.save_score(depth)
-		Global.high_score = depth
 		$HUD/PersonalBest.show()
+		
 	
 	$Spawner/EnemyTimer.stop()
 	$Spawner/ObstacleTimer.stop()
@@ -171,4 +170,10 @@ func _on_transition_timer_timeout() -> void:
 		get_tree().change_scene_to_file("res://Refuel/Refuel.tscn")
 	else:
 		Global.previous_scene = "gameplay"
-		get_tree().change_scene_to_file("res://Menu/Menu.tscn")
+		# If there is a new high score then the user is taken to the submit score scene.
+		if depth > Global.high_score:
+			Global.high_score = depth
+			get_tree().change_scene_to_file("res://Leaderboard/SubmitScore/submit_score.tscn")
+		else:
+			get_tree().change_scene_to_file("res://Menu/Menu.tscn")
+		

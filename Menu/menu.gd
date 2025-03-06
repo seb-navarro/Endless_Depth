@@ -7,6 +7,7 @@ var movement = 200
 func _ready() -> void:
 	# Plays the main theme music and fetches the high score from the global variable.
 	BackgroundMusic.play()
+	$LeaderboardUI.hide()
 	$Subamrine.play("subamrine_menu")
 	pressed = false
 	$Fade/ColorRect.visible = false
@@ -47,3 +48,17 @@ func transition_out():
 func _on_animation_timer_timeout() -> void:
 	transition_out()
 	
+
+# Opens the online leaderboard
+func _on_leaderboard_button_released() -> void:
+	$PressedSound.play()
+	$LeaderboardUI.show()
+	$LeaderboardButton.hide()
+	$StartButton.hide()
+
+# Exits the online leaderboard menu
+func _on_exit_button_released() -> void:
+	$PressedSound.play()
+	$LeaderboardUI.hide()
+	$LeaderboardButton.show()
+	$StartButton.show()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://blt4en04tvu33"]
+[gd_scene load_steps=32 format=3 uid="uid://blt4en04tvu33"]
 
 [ext_resource type="Texture2D" uid="uid://n3umsrt60goi" path="res://assets/art/environment/sky-1.png.png" id="1_85li0"]
 [ext_resource type="Script" path="res://Menu/menu.gd" id="1_qj7eo"]
@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://cph7gbuxm68ni" path="res://assets/art/player/Submarine (Right) - Endless Depth/submarine_right_12.png" id="23_28qiq"]
 [ext_resource type="Texture2D" uid="uid://b0r2crdj2lmmd" path="res://assets/art/player/Submarine (Right) - Endless Depth/submarine_right_13.png" id="24_njhgv"]
 [ext_resource type="AudioStream" uid="uid://csw1rfnibn667" path="res://assets/audio/sound effects/Endless Depth Button Pressed.wav" id="25_yq820"]
+[ext_resource type="PackedScene" uid="uid://dgygkbtm0burn" path="res://addons/quiver_leaderboards/leaderboard_ui.tscn" id="26_3vg6j"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3f7tx"]
 animations = [{
@@ -216,7 +217,7 @@ uppercase = true
 
 [node name="StartButton" type="TouchScreenButton" parent="."]
 z_index = 1
-position = Vector2(20, 181)
+position = Vector2(49, 245)
 scale = Vector2(2.5, 2.5)
 texture_normal = ExtResource("3_hbhmf")
 texture_pressed = ExtResource("10_80bl0")
@@ -236,9 +237,10 @@ theme_override_fonts/font = ExtResource("7_h5yxf")
 theme_override_font_sizes/font_size = 25
 text = "START"
 uppercase = true
+metadata/_edit_use_anchors_ = true
 
 [node name="StartButtonDisabled" type="TouchScreenButton" parent="."]
-position = Vector2(20, 181)
+position = Vector2(49, 245)
 scale = Vector2(2.5, 2.5)
 texture_normal = ExtResource("3_hbhmf")
 
@@ -261,14 +263,14 @@ uppercase = true
 [node name="PersonalBestTexture" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(126, 126)
 layout_mode = 2
-anchor_left = 0.617
+anchor_left = 0.579
 anchor_top = 0.251
-anchor_right = 0.958
+anchor_right = 0.921
 anchor_bottom = 0.479
-offset_left = -0.160034
+offset_left = 0.0799561
 offset_top = 0.279984
-offset_right = 0.159973
-offset_bottom = 0.119965
+offset_right = -0.0800476
+offset_bottom = 0.119934
 texture = ExtResource("4_rhayp")
 
 [node name="PersonalBestLabel" type="Label" parent="PersonalBestTexture"]
@@ -358,6 +360,62 @@ one_shot = true
 [node name="PressedSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("25_yq820")
 
+[node name="LeaderboardButtonDisabled" type="TouchScreenButton" parent="."]
+position = Vector2(295, 351)
+scale = Vector2(2, 2)
+texture_normal = ExtResource("3_hbhmf")
+
+[node name="Label" type="Label" parent="LeaderboardButtonDisabled"]
+offset_left = -0.5
+offset_top = 19.0
+offset_right = 65.5
+offset_bottom = 48.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_h5yxf")
+theme_override_font_sizes/font_size = 12
+text = "LEADERBOARD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LeaderboardButton" type="TouchScreenButton" parent="."]
+position = Vector2(295, 351)
+scale = Vector2(2, 2)
+texture_normal = ExtResource("3_hbhmf")
+texture_pressed = ExtResource("10_80bl0")
+
+[node name="Label" type="Label" parent="LeaderboardButton"]
+offset_left = -0.5
+offset_top = 19.0
+offset_right = 65.5
+offset_bottom = 48.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_h5yxf")
+theme_override_font_sizes/font_size = 12
+text = "LEADERBOARD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LeaderboardUI" parent="." instance=ExtResource("26_3vg6j")]
+z_index = 1
+layout_mode = 1
+
+[node name="ExitButton" type="TouchScreenButton" parent="LeaderboardUI"]
+texture_normal = ExtResource("3_hbhmf")
+texture_pressed = ExtResource("10_80bl0")
+
+[node name="Label" type="Label" parent="LeaderboardUI/ExitButton"]
+offset_left = 13.0
+offset_top = 22.0
+offset_right = 53.0
+offset_bottom = 43.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_h5yxf")
+theme_override_font_sizes/font_size = 25
+text = "EXIT"
+horizontal_alignment = 1
+
 [connection signal="released" from="StartButton" to="." method="_on_start_button_released"]
 [connection signal="timeout" from="Fade/TransitionTimer" to="." method="_on_menu_timer_timeout"]
 [connection signal="timeout" from="Fade/FadeTimer" to="." method="_on_animation_timer_timeout"]
+[connection signal="released" from="LeaderboardButton" to="." method="_on_leaderboard_button_released"]
+[connection signal="released" from="LeaderboardUI/ExitButton" to="." method="_on_exit_button_released"]
