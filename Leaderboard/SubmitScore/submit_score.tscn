@@ -22,17 +22,17 @@ color = Color(0, 0, 0, 1)
 
 [node name="ColorRect" type="TextureRect" parent="BlackBackground"]
 layout_mode = 0
-offset_top = 200.0
+offset_top = 125.0
 offset_right = 480.0
-offset_bottom = 500.0
+offset_bottom = 305.0
 texture = ExtResource("1_hw047")
 
 [node name="NicknameInput" type="LineEdit" parent="BlackBackground/ColorRect"]
 layout_mode = 0
-offset_left = 160.0
-offset_top = 120.0
-offset_right = 320.0
-offset_bottom = 154.0
+offset_left = 112.0
+offset_top = 111.0
+offset_right = 272.0
+offset_bottom = 145.0
 theme_override_fonts/font = ExtResource("2_tryts")
 theme_override_font_sizes/font_size = 32
 placeholder_text = "NICKNAME"
@@ -59,8 +59,8 @@ text = "PLEASE ENTER A NICKNAME
 horizontal_alignment = 1
 
 [node name="SubmitButtonDisabled" type="TouchScreenButton" parent="BlackBackground/ColorRect"]
-position = Vector2(176, 180)
-scale = Vector2(2.03125, 1.875)
+position = Vector2(295, 96)
+scale = Vector2(1, 0.923)
 texture_normal = ExtResource("3_bq5lu")
 
 [node name="Label" type="Label" parent="BlackBackground/ColorRect/SubmitButtonDisabled"]
@@ -76,10 +76,11 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_tryts")
 theme_override_font_sizes/font_size = 22
 text = "SUBMIT"
+metadata/_edit_use_anchors_ = true
 
 [node name="SubmitButton" type="TouchScreenButton" parent="BlackBackground/ColorRect"]
-position = Vector2(176, 181)
-scale = Vector2(2.03125, 1.875)
+position = Vector2(296, 96)
+scale = Vector2(1, 0.923)
 texture_normal = ExtResource("3_bq5lu")
 texture_pressed = ExtResource("4_2pl2d")
 
@@ -104,6 +105,7 @@ stream = ExtResource("6_lwn20")
 wait_time = 2.0
 
 [node name="SuccessMessage" type="ColorRect" parent="."]
+visible = false
 layout_mode = 0
 offset_top = 200.0
 offset_right = 480.0
@@ -123,6 +125,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="FailedMessage" type="ColorRect" parent="."]
+visible = false
 layout_mode = 0
 offset_top = 148.0
 offset_right = 480.0
