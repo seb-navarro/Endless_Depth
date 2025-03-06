@@ -34,6 +34,7 @@ func _on_start_button_released() -> void:
 	$Fade/FadeTimer.start()
 	pressed = true
 	$StartButton.visible = false
+	$LeaderboardButton.hide()
 	$PressedSound.play()
 	BackgroundMusic.stop()
 	Input.vibrate_handheld(100)

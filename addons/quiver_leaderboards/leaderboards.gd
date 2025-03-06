@@ -131,7 +131,7 @@ func post_guest_score(leaderboard_id: String, score: float, nickname := "", meta
 				success = false
 		_http_post_request_busy = false
 
-	if not success and retry:
+	if not success:
 		_handle_failed_post("guest", leaderboard_id, float(score), nickname, metadata, timestamp)
 
 	return success
