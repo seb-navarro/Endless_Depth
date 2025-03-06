@@ -19,7 +19,7 @@ current_player_highlight_color = Color(0.917647, 0.282353, 0, 1)
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 480.0
-offset_bottom = 715.0
+offset_bottom = 720.0
 texture = ExtResource("2_0rhra")
 stretch_mode = 1
 

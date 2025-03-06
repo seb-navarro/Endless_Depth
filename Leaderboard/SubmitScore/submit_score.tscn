@@ -105,18 +105,16 @@ stream = ExtResource("6_lwn20")
 wait_time = 2.0
 
 [node name="SuccessMessage" type="ColorRect" parent="."]
-visible = false
 layout_mode = 0
-offset_top = 200.0
 offset_right = 480.0
-offset_bottom = 500.0
+offset_bottom = 720.0
 color = Color(0, 0, 0, 1)
 
 [node name="Label" type="Label" parent="SuccessMessage"]
 layout_mode = 0
-offset_top = 100.0
+offset_top = 280.0
 offset_right = 480.0
-offset_bottom = 164.0
+offset_bottom = 344.0
 theme_override_colors/font_color = Color(0, 1, 0, 1)
 theme_override_fonts/font = ExtResource("2_tryts")
 theme_override_font_sizes/font_size = 55
@@ -125,18 +123,16 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="FailedMessage" type="ColorRect" parent="."]
-visible = false
 layout_mode = 0
-offset_top = 148.0
 offset_right = 480.0
-offset_bottom = 548.0
+offset_bottom = 720.0
 color = Color(0, 0, 0, 1)
 
 [node name="Label" type="Label" parent="FailedMessage"]
 layout_mode = 0
-offset_top = 18.0
+offset_top = 142.0
 offset_right = 480.0
-offset_bottom = 344.0
+offset_bottom = 515.0
 theme_override_colors/font_color = Color(0.917647, 0.282353, 0, 1)
 theme_override_fonts/font = ExtResource("2_tryts")
 theme_override_font_sizes/font_size = 55
