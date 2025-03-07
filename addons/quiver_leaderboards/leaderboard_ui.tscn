@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://dgygkbtm0burn"]
+[gd_scene load_steps=7 format=3 uid="uid://dgygkbtm0burn"]
 
 [ext_resource type="Script" path="res://addons/quiver_leaderboards/leaderboard_ui.gd" id="1_3mlof"]
 [ext_resource type="Texture2D" uid="uid://n3umsrt60goi" path="res://assets/art/environment/sky-1.png.png" id="2_0rhra"]
 [ext_resource type="FontFile" uid="uid://c1rtvtnimcle0" path="res://assets/fonts/monogram.ttf" id="2_3or5k"]
+[ext_resource type="Texture2D" uid="uid://55x675rh1bib" path="res://assets/art/environment/Button-1.png.png" id="4_lnxuo"]
+[ext_resource type="Texture2D" uid="uid://bdlg3hto4mcmh" path="res://assets/art/environment/start-button-pressed.png" id="5_fnp6u"]
+[ext_resource type="AudioStream" uid="uid://csw1rfnibn667" path="res://assets/audio/sound effects/Endless Depth Button Pressed.wav" id="6_41ssu"]
 
 [node name="LeaderboardUI" type="Control"]
 layout_mode = 3
@@ -83,6 +86,10 @@ text = " > "
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_3or5k")
+theme_override_fonts/title_button_font = ExtResource("2_3or5k")
+theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/title_button_font_size = 50
 columns = 3
 column_titles_visible = true
 allow_search = false
@@ -90,5 +97,29 @@ hide_folding = true
 hide_root = true
 select_mode = 1
 
+[node name="ExitButton" type="TouchScreenButton" parent="."]
+texture_normal = ExtResource("4_lnxuo")
+texture_pressed = ExtResource("5_fnp6u")
+
+[node name="Label" type="Label" parent="ExitButton"]
+offset_left = 13.0
+offset_top = 22.0
+offset_right = 53.0
+offset_bottom = 43.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_3or5k")
+theme_override_font_sizes/font_size = 25
+text = "EXIT"
+horizontal_alignment = 1
+
+[node name="ExitTimer" type="Timer" parent="ExitButton"]
+wait_time = 0.25
+one_shot = true
+
+[node name="PressedSound" type="AudioStreamPlayer" parent="ExitButton"]
+stream = ExtResource("6_41ssu")
+
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Nav/PrevButton" to="." method="_on_prev_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Nav/NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="released" from="ExitButton" to="." method="_on_exit_button_released"]
+[connection signal="timeout" from="ExitButton/ExitTimer" to="." method="_on_exit_timer_timeout"]

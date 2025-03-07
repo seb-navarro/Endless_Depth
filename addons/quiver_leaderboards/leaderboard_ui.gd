@@ -93,3 +93,14 @@ func _on_prev_button_pressed() -> void:
 func _on_next_button_pressed() -> void:
 	score_offset = score_offset + score_limit
 	refresh_scores()
+	
+	
+	
+func _on_exit_timer_timeout() -> void:
+	Global.previous_scene = "leaderboard"
+	get_tree().change_scene_to_file("res://Menu/Menu.tscn")
+
+
+func _on_exit_button_released() -> void:
+	$ExitButton/PressedSound.play()
+	$ExitButton/ExitTimer.start()

@@ -6,8 +6,8 @@ var movement = 200
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Plays the main theme music and fetches the high score from the global variable.
-	BackgroundMusic.play()
-	$LeaderboardUI.hide()
+	if Global.previous_scene != "leaderboard":
+		BackgroundMusic.play()
 	$Subamrine.play("subamrine_menu")
 	pressed = false
 	$Fade/ColorRect.visible = false
@@ -40,12 +40,14 @@ func _on_start_button_released() -> void:
 	Input.vibrate_handheld(100)
 
 
+# Fades out of scene
 func transition_out():
 	$Fade/ColorRect.visible = true
 	$Fade/AnimationPlayer.play("fade_out")
 	$Fade/TransitionTimer.start()
 	
 
+# Changes scene
 func _on_animation_timer_timeout() -> void:
 	transition_out()
 	
@@ -53,13 +55,11 @@ func _on_animation_timer_timeout() -> void:
 # Opens the online leaderboard
 func _on_leaderboard_button_released() -> void:
 	$PressedSound.play()
-	$LeaderboardUI.show()
 	$LeaderboardButton.hide()
 	$StartButton.hide()
+	$LeaderboardButton/LeaderboardTimer.start()
 
-# Exits the online leaderboard menu
-func _on_exit_button_released() -> void:
-	$PressedSound.play()
-	$LeaderboardUI.hide()
-	$LeaderboardButton.show()
-	$StartButton.show()
+# Timer is used so button sound can be heard before switching to new scene
+func _on_leaderboard_timer_timeout() -> void:
+	Global.previous_scene = "menu"
+	get_tree().change_scene_to_file("res://addons/quiver_leaderboards/leaderboard_ui.tscn")

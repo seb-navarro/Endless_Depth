@@ -10,8 +10,8 @@
 [node name="SubmitScore" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 480.0
+offset_bottom = 720.0
 script = ExtResource("1_px8ld")
 
 [node name="BlackBackground" type="ColorRect" parent="."]
@@ -119,6 +119,24 @@ theme_override_colors/font_color = Color(0, 1, 0, 1)
 theme_override_fonts/font = ExtResource("2_tryts")
 theme_override_font_sizes/font_size = 55
 text = "HIGH SCORE SUBMITTED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LoadingMessage" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 480.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="LoadingMessage"]
+layout_mode = 0
+offset_top = 280.0
+offset_right = 480.0
+offset_bottom = 344.0
+theme_override_colors/font_color = Color(1, 0.788235, 0, 1)
+theme_override_fonts/font = ExtResource("2_tryts")
+theme_override_font_sizes/font_size = 55
+text = "PROCESSING..."
 horizontal_alignment = 1
 vertical_alignment = 1
 
