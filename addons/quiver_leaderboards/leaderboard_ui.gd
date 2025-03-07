@@ -77,9 +77,9 @@ func refresh_scores():
 	else:
 		var row: TreeItem = score_list.create_item(root)
 		if score_data["error"]:
-			row.set_text(1, "ERROR FETCHING SCORES")
+			row.set_text(1, "ERROR")
 		else:
-			row.set_text(1, "NO SCORES WERE FOUND")
+			row.set_text(1, "NO SCORES")
 
 	next_button.disabled = not score_data["has_more_scores"]
 

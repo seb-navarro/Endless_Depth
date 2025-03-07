@@ -17,6 +17,7 @@ grow_vertical = 2
 size_flags_vertical = 3
 script = ExtResource("1_3mlof")
 leaderboard_id = "endless-depth-endless-depth-h-wUts"
+score_limit = 15
 current_player_highlight_color = Color(0.917647, 0.282353, 0, 1)
 
 [node name="Background" type="TextureRect" parent="."]
