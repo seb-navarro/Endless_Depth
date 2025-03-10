@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://blt4en04tvu33"]
+[gd_scene load_steps=32 format=3 uid="uid://blt4en04tvu33"]
 
 [ext_resource type="Texture2D" uid="uid://n3umsrt60goi" path="res://assets/art/environment/sky-1.png.png" id="1_85li0"]
 [ext_resource type="Script" path="res://Menu/menu.gd" id="1_qj7eo"]
@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://cph7gbuxm68ni" path="res://assets/art/player/Submarine (Right) - Endless Depth/submarine_right_12.png" id="23_28qiq"]
 [ext_resource type="Texture2D" uid="uid://b0r2crdj2lmmd" path="res://assets/art/player/Submarine (Right) - Endless Depth/submarine_right_13.png" id="24_njhgv"]
 [ext_resource type="AudioStream" uid="uid://csw1rfnibn667" path="res://assets/audio/sound effects/Endless Depth Button Pressed.wav" id="25_yq820"]
+[ext_resource type="Texture2D" uid="uid://y0vhoqnabuq" path="res://assets/art/environment/Settings Cog Wheel-1.png.png" id="26_8urww"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3f7tx"]
 animations = [{
@@ -407,7 +408,7 @@ offset_left = -78.0
 offset_bottom = 38.0
 grow_horizontal = 0
 theme_override_fonts/font = ExtResource("7_h5yxf")
-text = "SETTINGS"
+icon = ExtResource("26_8urww")
 flat = false
 item_count = 5
 popup/item_0/text = "MUSIC"

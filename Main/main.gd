@@ -19,7 +19,8 @@ func _ready() -> void:
 		Global.run_fuel = 100
 		Global.run_depth = 0
 		Global.difficulty = 1
-	elif Global.previous_scene == "menu" and Global.music == true:
+	
+	if Global.previous_scene == "menu" and Global.music == true:
 		BackgroundMusic.play()
 	
 	# Difficulty applied.

@@ -80,7 +80,8 @@ func _on_start_button_released() -> void:
 	pressed = true
 	$StartButton.visible = false
 	$LeaderboardButton.hide()
-	$PressedSound.play()
+	if Global.soundfx == true:
+		$PressedSound.play()
 	BackgroundMusic.stop()
 	Input.vibrate_handheld(100)
 
@@ -99,7 +100,8 @@ func _on_animation_timer_timeout() -> void:
 
 # Opens the online leaderboard
 func _on_leaderboard_button_released() -> void:
-	$PressedSound.play()
+	if Global.soundfx == true:
+		$PressedSound.play()
 	$LeaderboardButton.hide()
 	$StartButton.hide()
 	$LeaderboardButton/LeaderboardTimer.start()
