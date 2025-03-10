@@ -4,6 +4,7 @@ var pressed
 var movement = 200
 var popup_menu
 var music_loop
+var keep_open
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -11,6 +12,7 @@ func _ready() -> void:
 	if Global.previous_scene != "leaderboard" and Global.music == true:
 		BackgroundMusic.play()
 	$Subamrine.play("subamrine_menu")
+	keep_open = false
 	pressed = false
 	$Fade/ColorRect.visible = false
 	$PersonalBestTexture/PersonalBestValue.text = str(Global.high_score)
@@ -30,6 +32,8 @@ func _ready() -> void:
 		
 	if Global.vibrate == false:
 		popup_menu.set_item_checked(4, false)
+		
+	popup_menu.hide_on_checkable_item_selection = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -113,6 +117,7 @@ func on_index_pressed(index: int):
 		popup_menu.set_item_checked(index, false)
 	else:
 		popup_menu.set_item_checked(index, true)
+
 
 
 # Timer is used so button sound can be heard before switching to new scene
