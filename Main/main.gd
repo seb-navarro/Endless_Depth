@@ -20,6 +20,7 @@ func _ready() -> void:
 		Global.run_depth = 0
 		Global.difficulty = 1
 	
+	# Only plays music if music was not switched off in the settings menu.
 	if Global.previous_scene == "menu" and Global.music == true:
 		BackgroundMusic.play()
 	
@@ -76,6 +77,7 @@ func _process(delta: float) -> void:
 # When a player is hit the hit sound is played and the player loses 10 fuel.
 func _on_player_hit() -> void:
 	fuel -= 10
+	# Sound effects only play if they have not been turned off in the settings menu.
 	if Global.soundfx == true:
 		$HitSound.play()
 
@@ -132,6 +134,7 @@ func _on_depth_timer_timeout() -> void:
 			$RefuelSound.play()
 		$HUD.show_message("REFUEL STATION ->", 10, "#ffc900")
 		$Player.down = 0
+		# Vibrate only triggers if it has not been turned off in the settings menu.
 		if Global.vibrate == true:
 			Input.vibrate_handheld(100)
 

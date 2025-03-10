@@ -42,6 +42,9 @@ func _process(delta: float) -> void:
 		$Subamrine.position.y += movement * delta
 		$Subamrine.speed_scale = 10
 	
+	
+	# Sets global variables that determine whether music, sound effects, and device vibration should be on or off.
+	# This is achieved through checking/unchecking items in the settings menu.
 	if popup_menu.is_item_checked(0):
 		Global.music = true
 	else:
@@ -57,11 +60,12 @@ func _process(delta: float) -> void:
 	else:
 		Global.vibrate = false
 	
-	
+	# Music stops if it is unchecked in the settings menu.
 	if Global.music == false:
 		BackgroundMusic.stop()
 		music_loop = true
 
+	# "music_loop" is used otherwise the music would be stuck trying to start playing at every frame.
 	if music_loop == true:
 		if Global.music == true:
 			BackgroundMusic.play()
@@ -83,9 +87,11 @@ func _on_start_button_released() -> void:
 	pressed = true
 	$StartButton.visible = false
 	$LeaderboardButton.hide()
+	# Sound effects only play if they have not been turned off in settings menu.
 	if Global.soundfx == true:
 		$PressedSound.play()
 	BackgroundMusic.stop()
+	# Vibrate only triggers if it has not been turned off in settings menu.
 	if Global.vibrate == true:
 		Input.vibrate_handheld(100)
 
@@ -111,6 +117,7 @@ func _on_leaderboard_button_released() -> void:
 	$LeaderboardButton/LeaderboardTimer.start()
 	
 
+# When an item from the settings menu is pressed, the item can be checked and unchecked accordingly.
 func on_index_pressed(index: int):
 	if popup_menu.is_item_checked(index):
 		popup_menu.set_item_checked(index, false)

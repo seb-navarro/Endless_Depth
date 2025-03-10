@@ -23,6 +23,8 @@ func _ready() -> void:
 	run_depth = 0
 	# Loads the user's high score from the file.
 	load_score()
+	
+	# Variables that track the settings toggled in the settings menu.
 	music = true
 	soundfx = true
 	vibrate = true
