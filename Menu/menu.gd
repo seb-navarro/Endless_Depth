@@ -64,7 +64,6 @@ func _process(delta: float) -> void:
 
 	if music_loop == true:
 		if Global.music == true:
-			print("check")
 			BackgroundMusic.play()
 			music_loop = false
 		
