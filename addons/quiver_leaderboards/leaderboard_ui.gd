@@ -102,5 +102,6 @@ func _on_exit_timer_timeout() -> void:
 
 
 func _on_exit_button_released() -> void:
-	$ExitButton/PressedSound.play()
+	if Global.soundfx == true:
+		$ExitButton/PressedSound.play()
 	$ExitButton/ExitTimer.start()

@@ -20,8 +20,11 @@ func _process(delta: float) -> void:
 # The failed upload is stored in local storage using the "Quiver" plugin so that it can be uploaded again next time the app open with an internet connection.
 func _on_submit_button_released() -> void:
 	$BlackBackground/ColorRect/SubmitButton.hide()
-	$ButtonSound.play()
-	Input.vibrate_handheld(100)
+	if Global.soundfx == true:
+		$ButtonSound.play()
+		
+	if Global.vibrate == true:
+		Input.vibrate_handheld(100)
 	var nickname = $BlackBackground/ColorRect/NicknameInput.get_text()
 	$LoadingMessage.show()
 	$BlackBackground/ColorRect/NicknameInput.hide()

@@ -76,7 +76,8 @@ func _process(delta: float) -> void:
 # When a player is hit the hit sound is played and the player loses 10 fuel.
 func _on_player_hit() -> void:
 	fuel -= 10
-	$HitSound.play()
+	if Global.soundfx == true:
+		$HitSound.play()
 
 
 func _on_fuel_deplete_timeout() -> void:
@@ -114,7 +115,8 @@ func game_over():
 	$Player.over()
 	$Fade/FadeTimer.start()
 	BackgroundMusic.stop()
-	$SinkSound.play()
+	if Global.soundfx == true:
+		$SinkSound.play()
 	gameover = true
 
 
@@ -126,10 +128,12 @@ func _on_depth_timer_timeout() -> void:
 		depth += 1
 		$HUD.update_depth(depth)
 	else:
-		$RefuelSound.play()
+		if Global.soundfx == true:
+			$RefuelSound.play()
 		$HUD.show_message("REFUEL STATION ->", 10, "#ffc900")
 		$Player.down = 0
-		Input.vibrate_handheld(100)
+		if Global.vibrate == true:
+			Input.vibrate_handheld(100)
 
 
 # When a player boosts the player sinks twice as fast but also uses up twice as much fuel.

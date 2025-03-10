@@ -83,7 +83,8 @@ func _on_start_button_released() -> void:
 	if Global.soundfx == true:
 		$PressedSound.play()
 	BackgroundMusic.stop()
-	Input.vibrate_handheld(100)
+	if Global.vibrate == true:
+		Input.vibrate_handheld(100)
 
 
 # Fades out of scene
