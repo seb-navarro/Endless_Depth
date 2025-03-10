@@ -398,6 +398,34 @@ vertical_alignment = 1
 wait_time = 0.25
 one_shot = true
 
+[node name="Settings" type="MenuButton" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -78.0
+offset_bottom = 38.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("7_h5yxf")
+text = "SETTINGS"
+flat = false
+item_count = 5
+popup/item_0/text = "MUSIC"
+popup/item_0/checkable = 1
+popup/item_0/checked = true
+popup/item_1/id = 1
+popup/item_1/disabled = true
+popup/item_2/text = "SOUND FX"
+popup/item_2/checkable = 1
+popup/item_2/checked = true
+popup/item_2/id = 2
+popup/item_3/id = 3
+popup/item_3/disabled = true
+popup/item_4/text = "VIBRATE"
+popup/item_4/checkable = 1
+popup/item_4/checked = true
+popup/item_4/id = 4
+
 [connection signal="released" from="StartButton" to="." method="_on_start_button_released"]
 [connection signal="timeout" from="Fade/TransitionTimer" to="." method="_on_menu_timer_timeout"]
 [connection signal="timeout" from="Fade/FadeTimer" to="." method="_on_animation_timer_timeout"]

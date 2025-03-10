@@ -7,6 +7,9 @@ var run_depth
 var high_score
 var previous_scene
 var difficulty = 1.0
+var music
+var soundfx
+var vibrate
 const save_path = "user://player_high_score.save"
 
 
@@ -20,6 +23,9 @@ func _ready() -> void:
 	run_depth = 0
 	# Loads the user's high score from the file.
 	load_score()
+	music = true
+	soundfx = true
+	vibrate = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

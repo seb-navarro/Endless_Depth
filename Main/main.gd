@@ -16,10 +16,11 @@ func _ready() -> void:
 	if Global.previous_scene == "refuel":
 		Global.difficulty = Global.difficulty * 0.75
 	elif Global.previous_scene == "menu":
-		BackgroundMusic.play()
 		Global.run_fuel = 100
 		Global.run_depth = 0
 		Global.difficulty = 1
+	elif Global.previous_scene == "menu" and Global.music == true:
+		BackgroundMusic.play()
 	
 	# Difficulty applied.
 	$Spawner/EnemyTimer.wait_time = Global.difficulty
