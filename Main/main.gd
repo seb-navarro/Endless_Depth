@@ -23,6 +23,7 @@ func _ready() -> void:
 	# Only plays music if music was not switched off in the settings menu.
 	if Global.previous_scene == "menu" and Global.music == true:
 		BackgroundMusic.play()
+		
 	
 	# Difficulty applied.
 	$Spawner/EnemyTimer.wait_time = Global.difficulty

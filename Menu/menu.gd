@@ -19,21 +19,31 @@ func _ready() -> void:
 	popup_menu = $Settings.get_popup()
 	popup_menu.index_pressed.connect(on_index_pressed)
 	
+	# Stops the background music from restarting when going into the leaderboards menu.
 	if Global.previous_scene == "leaderboard":
 		music_loop = false
 	else:
 		music_loop = true
 	
+	# Displays correct checkboxes depending on the global variable that is linked with the setting.
 	if Global.music == false:
 		popup_menu.set_item_checked(0, false)
+	else:
+		popup_menu.set_item_checked(0, true)
 	
 	if Global.soundfx == false:
 		popup_menu.set_item_checked(2, false)
+	else:
+		popup_menu.set_item_checked(2, true)
 		
 	if Global.vibrate == false:
 		popup_menu.set_item_checked(4, false)
-		
+	else:
+		popup_menu.set_item_checked(4, true)
+	
+	# Keeps the dropdown settings menu open whilst selecting settings.
 	popup_menu.hide_on_checkable_item_selection = false
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -41,24 +51,6 @@ func _process(delta: float) -> void:
 	if pressed == true:
 		$Subamrine.position.y += movement * delta
 		$Subamrine.speed_scale = 10
-	
-	
-	# Sets global variables that determine whether music, sound effects, and device vibration should be on or off.
-	# This is achieved through checking/unchecking items in the settings menu.
-	if popup_menu.is_item_checked(0):
-		Global.music = true
-	else:
-		Global.music = false
-
-	if popup_menu.is_item_checked(2):
-		Global.soundfx = true
-	else:
-		Global.soundfx = false
-
-	if popup_menu.is_item_checked(4):
-		Global.vibrate = true
-	else:
-		Global.vibrate = false
 	
 	# Music stops if it is unchecked in the settings menu.
 	if Global.music == false:
@@ -70,8 +62,7 @@ func _process(delta: float) -> void:
 		if Global.music == true:
 			BackgroundMusic.play()
 			music_loop = false
-		
-		
+
 
 # Sets the previous scene for retrieval in the following scene.
 # Transitions to main gameplay scene.
@@ -118,12 +109,27 @@ func _on_leaderboard_button_released() -> void:
 	
 
 # When an item from the settings menu is pressed, the item can be checked and unchecked accordingly.
+# Sets global variables that determine whether music, sound effects, and device vibration should be on or off.
+# User settings are then saved in a local file for retrieval on each launch of the game.
 func on_index_pressed(index: int):
 	if popup_menu.is_item_checked(index):
 		popup_menu.set_item_checked(index, false)
+		if index == 0:
+			Global.music = false
+		elif index == 2:
+			Global.soundfx = false
+		elif index == 4:
+			Global.vibrate = false
+		Global.save_settings()
 	else:
 		popup_menu.set_item_checked(index, true)
-
+		if index == 0:
+			Global.music = true
+		elif index == 2:
+			Global.soundfx = true
+		elif index == 4:
+			Global.vibrate = true
+		Global.save_settings()
 
 
 # Timer is used so button sound can be heard before switching to new scene
