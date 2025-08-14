@@ -1,8 +1,11 @@
 # Endless_Depth
  Endless Depth is a mobile game where a submarine is tasked with exploring the endless depths of a mysterious lake.
 
- ## How to Play
+ ## Original Release (Android)
  Android apk file available for download from releases.
+
+ ## Web Release
+ <iframe frameborder="0" src="https://itch.io/embed/3811867?border_width=2" width="210" height="169"><a href="https://p-amos.itch.io/endless-depth">Endless Depth by p_amos</a></iframe>
 
  ## Screenshots
 <img width="395" height="599" alt="Main Menu" src="https://github.com/user-attachments/assets/e00690e9-d20a-4e4e-b83d-17a1b2716119" />
